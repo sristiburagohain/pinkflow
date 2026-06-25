@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🌷 Study Shop</title>
+
+<style>
+
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Quicksand',sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 35px; /* ← adds space around entire website */
+
+  min-height: 100vh;
+
+  background-color: #ffd6e7;
+  background-image: radial-gradient(
+    rgba(255,255,255,0.6) 6px,
+    transparent 6px
+  );
+
+  background-size: 50px 50px;
+}
+
+.shopContainer{
+max-width:1600px;
+margin:auto;
+
+background-color:#fff8fc;
+background-image:
+radial-gradient(
+rgba(255,192,203,0.35) 7px,
+transparent 3px
+);
+
+background-size:35px 35px;
+
+border-radius:35px;
+padding:40px;
+
+box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+/* HEADER */
+
+.shopHeader{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:30px;
+margin-bottom:40px;
+}
+
+.headerText h1{
+font-size:3.2rem;
+color:#e25793;
+margin-bottom:15px;
+font-weight:700;
+}
+
+.headerText p{
+font-size:1.1rem;
+color:#7a5a6b;
+margin-bottom:25px;
+}
+
+.backBtn{
+background:#fff0f6;
+border:2px solid #ffd3e6;
+padding:15px 30px;
+border-radius:20px;
+font-size:1.2rem;
+font-weight:600;
+cursor:pointer;
+color:#e25793;
+transition:.3s;
+}
+
+.backBtn:hover{
+transform:translateY(-3px);
+}
+
+.heroImg{
+font-size:8rem;
+}
+
+/* CATEGORY SECTION */
+
+.categories{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+gap:35px;
+}
+
+.categoryCard{
+background: #ffd6e7;
+border-radius:30px;
+padding:18px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+flex-wrap:wrap;
+box-shadow:0 6px 20px rgba(0,0,0,.05);
+transition:.3s;
+}
+
+.categoryCard:hover{
+transform:translateY(-5px);
+}
+
+.categoryIcon{
+font-size:4rem;
+}
+
+.categoryInfo{
+flex:1;
+padding:0 20px;
+}
+
+.categoryInfo h3{
+font-size:1.5rem;
+font-weight:700;
+color:#5b1b5f;
+margin-bottom:10px;
+}
+
+.categoryInfo p{
+font-size:0.95rem;
+line-height:1.6;
+color:#6f5a68;
+}
+
+.backBtn,
+.shopBtn{
+font-size:0.95rem;
+font-weight:700;
+letter-spacing:0.3px;
+}
+
+.headerText h1,
+.categoryInfo h3,
+.thankBox h2{
+letter-spacing:1px;
+}
+
+.arrowBtn{
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+background:#ff6aa8;
+color:white;
+font-size:2rem;
+cursor:pointer;
+}
+
+
+/* SECTION TITLE */
+
+.sectionTitle{
+font-size:2.3rem;
+color:#ea5a98;
+margin:50px 0 30px;
+}
+
+/* PRODUCTS */
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.productCard{
+background:white;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,.07);
+transition:.3s;
+}
+
+.productCard:hover{
+transform:translateY(-5px);
+}
+
+.productImg{
+height:260px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:7rem;
+background:#fff4f8;
+}
+
+.productInfo{
+padding:20px;
+}
+
+.productInfo h3{
+font-size:1.6rem;
+margin-bottom:10px;
+}
+
+.productInfo p{
+margin-bottom:15px;
+line-height:1.7;
+}
+
+
+.shopBtn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:15px;
+background:linear-gradient(90deg,#ff6aa8,#ff82bb);
+color:white;
+font-size:1.1rem;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* THANK YOU */
+
+.thankBox{
+margin-top:60px;
+padding:40px;
+border:2px dashed #ffd1e3;
+border-radius:35px;
+background:#fff9fb;
+text-align:center;
+}
+
+.thankBox h2{
+font-size:2.2rem;
+color:#5a285c;
+margin-bottom:15px;
+}
+
+.thankBox p{
+font-size:1.2rem;
+}
+
+.footerNote{
+margin-top:25px;
+text-align:center;
+color:#d36c99;
+font-size:1rem;
+}
+
+.dropdownMenu{
+display:none;
+width:100%;
+margin-top:20px;
+flex-basis:100%;
+}
+
+.productsGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+}
+
+.dropdownProduct{
+background:white;
+border-radius:18px;
+padding:15px;
+text-align:center;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.dropdownProduct img{
+width:100%;
+height:140px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.productName{
+font-size:.95rem;
+font-weight:600;
+margin-bottom:10px;
+color:#5b1b5f;
+}
+
+.viewBtn{
+width:100%;
+padding:10px;
+border:none;
+border-radius:12px;
+background:#ff6aa8;
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+.shopBtnSmall{
+background:#ff6aa8;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:12px;
+cursor:pointer;
+font-size:.85rem;
+font-weight:600;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+body{
+padding:15px;
+}
+
+.shopHeader{
+flex-direction:column;
+text-align:center;
+}
+
+.headerText h1{
+font-size:2.7rem;
+}
+
+.categories{
+grid-template-columns:1fr;
+}
+
+.categoryCard{
+flex-direction:column;
+text-align:center;
+}
+
+.categoryInfo{
+padding:20px 0;
+}
+
+.heroImg{
+font-size:7rem;
+}
+
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<div class="shopContainer">
+
+<!-- HEADER -->
+
+<div class="shopHeader">
+
+<div class="headerText">
+<h1>🌷Study Shop</h1>
+
+<p>
+Handpicked study essentials for productive days ✨
+</p>
+
+<button class="backBtn" onclick="window.location.href='index.html'">
+🏠 Back to Dashboard
+</button>
+</div>
+
+<div class="heroImg">
+💡🌸🧸
+</div>
+
+</div>
+
+<!-- CATEGORIES -->
+
+<div class="categories">
+
+  <!-- NOTEBOOKS -->
+
+  <div class="categoryCard">
+
+    <div class="categoryIcon">📔</div>
+
+    <div class="categoryInfo">
+
+      <h3>📚 Notebooks & Journals</h3>
+
+      <p>
+        Beautiful notebooks and journals to write your
+        thoughts, notes and dreams.
+      </p>
+
+      <div class="dropdownMenu" id="notebooks">
+        <div class="productsGrid" id="notebookProducts"></div>
+      </div>
+
+    </div>
+
+    <button
+      class="arrowBtn"
+      onclick="toggleDropdown('notebooks')">
+      ›
+    </button>
+
+  </div>
+
+  <!-- STATIONERY -->
+
+  <div class="categoryCard">
+
+    <div class="categoryIcon">🖍️</div>
+
+    <div class="categoryInfo">
+
+      <h3>✨ Stationery</h3>
+
+      <p>
+        Cute pens, highlighters, sticky notes and everything
+        to make studying fun.
+      </p>
+
+      <div class="dropdownMenu" id="stationery">
+        <div class="productsGrid" id="stationeryProducts"></div>
+      </div>
+
+    </div>
+
+    <button
+      class="arrowBtn"
+      onclick="toggleDropdown('stationery')">
+      ›
+    </button>
+
+  </div>
+
+  <!-- DESK SETUP -->
+
+  <div class="categoryCard">
+
+    <div class="categoryIcon">💡</div>
+
+    <div class="categoryInfo">
+
+      <h3>💡 Desk Setup</h3>
+
+      <p>
+        Everything you need for a cozy aesthetic and
+        productive study space.
+      </p>
+
+      <div class="dropdownMenu" id="desksetup">
+        <div class="productsGrid" id="deskProducts"></div>
+      </div>
+
+    </div>
+
+    <button
+      class="arrowBtn"
+      onclick="toggleDropdown('desksetup')">
+      ›
+    </button>
+
+  </div>
+
+  <!-- ACCESSORIES -->
+
+  <div class="categoryCard">
+
+    <div class="categoryIcon">🧸</div>
+
+    <div class="categoryInfo">
+
+      <h3>🧸 Cute Accessories</h3>
+
+      <p>
+        Adorable accessories to add charm and comfort
+        to your study routine.
+      </p>
+
+      <div class="dropdownMenu" id="accessories">
+        <div class="productsGrid" id="accessoryProducts"></div>
+      </div>
+
+    </div>
+
+    <button
+      class="arrowBtn"
+      onclick="toggleDropdown('accessories')">
+      ›
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+function toggleDropdown(id){
+
+const menu =
+document.getElementById(id);
+
+if(menu.style.display==="block"){
+
+menu.style.display="none";
+
+}else{
+
+menu.style.display="block";
+
+}
+
+}
+
+</script>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs,
+doc,
+updateDoc,
+increment
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyDQk--C2NI0CYvfoMaz-WvpUwxi2PJOEJM",
+authDomain: "pinkflow-f0790.firebaseapp.com",
+projectId: "pinkflow-f0790",
+storageBucket: "pinkflow-f0790.firebasestorage.app",
+messagingSenderId: "355559231039",
+appId: "1:355559231039:web:c4b450e8cd24637953b28a"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const snapshot =
+await getDocs(collection(db,"products"));
+
+snapshot.forEach((doc)=>{
+
+const p = doc.data();
+
+const productHTML = `
+<div class="dropdownProduct">
+
+<img src="${p.image}">
+
+<div class="productName">
+${p.name}
+</div>
+
+<a
+href="${p.affiliateLink}"
+target="_blank"
+onclick="trackClick('${doc.id}')">
+
+<button class="viewBtn">
+View Product
+</button>
+
+</a>
+
+</div>
+`;
+
+if(p.category==="stationery"){
+document
+.getElementById("stationeryProducts")
+.innerHTML += productHTML;
+}
+
+if(p.category==="notebooks"){
+document
+.getElementById("notebookProducts")
+.innerHTML += productHTML;
+}
+
+if(p.category==="desksetup"){
+document
+.getElementById("deskProducts")
+.innerHTML += productHTML;
+}
+
+if(p.category==="accessories"){
+document
+.getElementById("accessoryProducts")
+.innerHTML += productHTML;
+}
+
+});
+
+window.trackClick = async function(productId){
+
+try{
+
+await updateDoc(
+doc(db,"products",productId),
+{
+clicks: increment(1)
+}
+);
+
+}catch(error){
+
+console.log(error);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

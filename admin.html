@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🌷 PinkFlow Admin</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#ffd6e7;
+padding:40px;
+}
+
+.adminCard{
+max-width:700px;
+margin:auto;
+background:white;
+padding:35px;
+border-radius:25px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+h1{
+color:#e25793;
+margin-bottom:25px;
+text-align:center;
+}
+
+label{
+display:block;
+margin-top:15px;
+margin-bottom:6px;
+font-weight:600;
+color:#5b1b5f;
+}
+
+input,
+select{
+width:100%;
+padding:12px;
+border:2px solid #ffd6e7;
+border-radius:12px;
+font-size:1rem;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:20px;
+border:none;
+border-radius:12px;
+background:#ff6aa8;
+color:white;
+font-size:1rem;
+font-weight:bold;
+cursor:pointer;
+}
+
+#status{
+margin-top:15px;
+font-weight:bold;
+text-align:center;
+color:green;
+}
+
+#loginScreen{
+max-width:500px;
+margin:auto;
+}
+
+</style>
+</head>
+
+<body>
+
+    <div id="loginScreen">
+
+<div class="adminCard">
+
+<h1>🌷 PinkFlow Admin Login</h1>
+
+<input
+type="email"
+id="adminEmail"
+placeholder="Email">
+
+<br><br>
+
+<input
+type="password"
+id="adminPassword"
+placeholder="Password">
+
+<button onclick="loginAdmin()">
+Login
+</button>
+
+</div>
+
+</div>
+
+<div id="adminPanel" style="display:none;">
+
+<div class="adminCard">
+
+<h1>🌷 PinkFlow Admin</h1>
+
+<button onclick="logoutAdmin()">
+🚪 Logout
+</button>
+
+<br><br>
+
+<h2>📈 Analytics</h2>
+<div id="analyticsBox">
+
+Loading analytics...
+
+</div>
+
+
+<label>Product Name</label>
+<input
+type="text"
+id="name"
+placeholder="Cute Gel Pen">
+
+<label>Category</label>
+
+<select id="category">
+<option value="notebooks">📚 Notebooks</option>
+<option value="stationery">✨ Stationery</option>
+<option value="desksetup">💡 Desk Setup</option>
+<option value="accessories">🧸 Accessories</option>
+</select>
+
+<label>Image Path</label>
+
+<input
+type="text"
+id="image"
+placeholder="images/gelpen.jpg">
+
+<label>Affiliate Link</label>
+
+<input
+type="text"
+id="affiliate"
+placeholder="https://amazon.in/...">
+
+<button id="saveBtn">
+💾 Save Product
+</button>
+
+<p id="status"></p>
+
+<hr style="margin:30px 0;">
+
+<h2>📦 Existing Products</h2>
+
+<div id="productList">
+Loading...
+</div>
+
+</div>
+
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import {
+getAuth,
+signInWithEmailAndPassword,
+onAuthStateChanged,
+signOut
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+doc,
+updateDoc
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyDQk--C2NI0CYvfoMaz-WvpUwxi2PJOEJM",
+authDomain: "pinkflow-f0790.firebaseapp.com",
+projectId: "pinkflow-f0790",
+storageBucket: "pinkflow-f0790.firebasestorage.app",
+messagingSenderId: "355559231039",
+appId: "1:355559231039:web:c4b450e8cd24637953b28a"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let editingProductId = null;
+
+/* LOGIN */
+
+async function loginAdmin(){
+
+const email =
+document.getElementById("adminEmail").value;
+
+const password =
+document.getElementById("adminPassword").value;
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+}
+
+window.loginAdmin = loginAdmin;
+
+/* LOGOUT */
+
+async function logoutAdmin(){
+
+await signOut(auth);
+
+}
+
+window.logoutAdmin = logoutAdmin;
+
+/* AUTH CHECK */
+
+onAuthStateChanged(auth,(user)=>{
+
+if(!user){
+
+document.getElementById("loginScreen").style.display =
+"block";
+
+document.getElementById("adminPanel").style.display =
+"none";
+
+return;
+
+}
+
+if(
+user.email !==
+"shrishtiburagohain123@gmail.com"
+){
+
+alert("Access Denied");
+
+window.location.href =
+"index.html";
+
+return;
+
+}
+
+document.getElementById("loginScreen").style.display =
+"none";
+
+document.getElementById("adminPanel").style.display =
+"block";
+
+loadProducts();
+
+});
+
+/* SAVE PRODUCT */
+
+document
+.getElementById("saveBtn")
+.addEventListener("click", async()=>{
+
+const name =
+document.getElementById("name").value;
+
+const category =
+document.getElementById("category").value;
+
+const image =
+document.getElementById("image").value;
+
+const affiliateLink =
+document.getElementById("affiliate").value;
+
+if(
+!name ||
+!category ||
+!image ||
+!affiliateLink
+){
+alert("Fill all fields");
+return;
+}
+
+if(editingProductId){
+
+await updateDoc(
+doc(db,"products",editingProductId),
+{
+name,
+category,
+image,
+affiliateLink
+}
+);
+
+editingProductId = null;
+
+document.getElementById("saveBtn").innerText =
+"💾 Save Product";
+
+}else{
+
+await addDoc(
+collection(db,"products"),
+{
+name,
+category,
+image,
+affiliateLink,
+clicks:0,
+createdAt:Date.now()
+}
+);
+
+}
+
+document.getElementById("status").innerText =
+"✅ Product Saved";
+
+document.getElementById("name").value = "";
+document.getElementById("image").value = "";
+document.getElementById("affiliate").value = "";
+
+loadProducts();
+
+});
+
+/* LOAD PRODUCTS */
+
+async function loadProducts(){
+
+const list =
+document.getElementById("productList");
+
+list.innerHTML = "";
+
+const snapshot =
+await getDocs(
+collection(db,"products")
+);
+
+let totalClicks = 0;
+let topProduct = "";
+let topClicks = 0;
+
+snapshot.forEach((product)=>{
+
+const p = product.data();
+
+const clicks = p.clicks || 0;
+
+totalClicks += clicks;
+
+if(clicks > topClicks){
+
+topClicks = clicks;
+topProduct = p.name;
+
+}
+
+list.innerHTML += `
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px;
+margin-top:10px;
+background:#fff4f8;
+border-radius:12px;
+">
+
+<span>${p.name}</span>
+
+<div>
+
+<button
+onclick="editProduct('${product.id}')"
+style="
+width:auto;
+margin-right:8px;
+padding:8px 14px;
+background:#ffb347;
+">
+✏️ Edit
+</button>
+
+<button
+onclick="deleteProduct('${product.id}')"
+style="
+width:auto;
+padding:8px 14px;
+background:#ff5d7a;
+">
+🗑 Delete
+</button>
+
+</div>
+
+</div>
+`;
+
+});
+
+document.getElementById(
+"analyticsBox"
+).innerHTML = `
+
+<div style="
+background:#fff4f8;
+padding:20px;
+border-radius:15px;
+">
+
+<p>📊 Total Clicks: <b>${totalClicks}</b></p>
+
+<p>🏆 Top Product:
+<b>${topProduct || "None Yet"}</b></p>
+
+<p>🔥 Top Clicks:
+<b>${topClicks}</b></p>
+
+</div>
+
+`;
+
+}
+
+/* DELETE */
+
+window.deleteProduct =
+async function(id){
+
+if(!confirm("Delete product?"))
+return;
+
+await deleteDoc(
+doc(db,"products",id)
+);
+
+loadProducts();
+
+}
+
+/* EDIT */
+
+window.editProduct =
+async function(id){
+
+const snapshot =
+await getDocs(
+collection(db,"products")
+);
+
+snapshot.forEach((product)=>{
+
+if(product.id===id){
+
+const p = product.data();
+
+document.getElementById("name").value =
+p.name;
+
+document.getElementById("category").value =
+p.category;
+
+document.getElementById("image").value =
+p.image;
+
+document.getElementById("affiliate").value =
+p.affiliateLink;
+
+editingProductId = id;
+
+document.getElementById("saveBtn").innerText =
+"💾 Update Product";
+
+}
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#stickyNote{
+  width:260px;
+  height:260px;
+}
+
+#stickyNote textarea{
+  resize:none !important;
+}
+
+#stickyNote {
+  user-select: none;
+  cursor: move;
+}
+
+#stickyNote textarea {
+  resize: none !important;
+}
+
+.pink-theme{
+  background: linear-gradient(
+    135deg,
+    #ffe4ec,
+    #ffd6e7
+  );
+}
+
+.lavender-theme{
+  background: linear-gradient(
+    135deg,
+    #ede9fe,
+    #d8b4fe
+  );
+}
+
+.white-theme{
+  background: #ffffff;
+}
+
+.dark-theme{
+  background: #1f2937;
+  color: white;
+}
+
+.bro-theme{
+  background: linear-gradient(
+    135deg,
+    #0f0f0f,
+    #1a1a1a,
+    #2b2b2b
+  );
+  color: #f5f5f5;
+}
+
+/* Glass cards */
+.bro-theme .glass{
+  background: rgba(35,35,35,0.85);
+  border-color: #6b7280;
+}
+
+/* Headings */
+.bro-theme h1,
+.bro-theme h2,
+.bro-theme h3{
+  color: #ffffff !important;
+}
+
+/* Normal text */
+.bro-theme p{
+  color: #d1d5db !important;
+}
+
+.bro-theme span{
+  color: inherit !important;
+}
+
+.bro-theme button{
+  background: #374151 !important;
+  color: white !important;
+  border: 1px solid #6b7280;
+}
+
+.bro-theme button:hover{
+  background: #4b5563 !important;
+}
+
+.bro-theme .bg-pink-50{
+  background:#dcdcdc !important;
+}
+
+.bro-theme .text-pink-500,
+.bro-theme .text-pink-600,
+.bro-theme .text-pink-700{
+  color:#000000 !important;
+}
+
+.bro-theme .border-pink-200{
+  border-color:#6b7280 !important;
+}
+
+/* Motivation card text */
+
+.bro-theme #motivationTitle,
+.bro-theme #motivationTitle + p{
+  color: black !important;
+}
+
+/* Academic records text */
+
+.bro-theme #academicRecordsList,
+.bro-theme #academicRecordsList *{
+  color: black !important;
+}
+
+/* Academic records */
+
+.bro-theme #academicRecordsList div,
+.bro-theme #academicRecordsList span{
+  color: #111111 !important;
+}
+
+/* Motivation card */
+
+.bro-theme #motivationTitle,
+.bro-theme #motivationTitle + p{
+  color: #111111 !important;
+}
+
+.bro-theme .from-pink-200,
+.bro-theme .to-rose-200{
+  --tw-gradient-from:#dcdcdc !important;
+  --tw-gradient-to:#bfbfbf !important;
+}
+
+/* ===== BRO MODE FORCE OVERRIDES ===== */
+
+.bro-theme .bg-pink-50,
+.bro-theme [class*="bg-pink"] {
+  background: #d9d9d9 !important;
+}
+
+.bro-theme #academicRecordsList *,
+.bro-theme #academicRecordsList,
+.bro-theme #motivationTitle,
+.bro-theme #motivationTitle + p {
+  color: #000000 !important;
+}
+
+/* Force all text inside light cards to black */
+.bro-theme .bg-pink-50 *,
+.bro-theme [class*="bg-pink"] * {
+  color: #000000 !important;
+}

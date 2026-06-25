@@ -1,0 +1,3777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PinkFlow ✨</title>
+
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .dark-mode {
+      background: linear-gradient(to bottom right, #1e1b2e, #2a1f3d, #3b224d);
+      color: #ffd6f5;
+    }
+
+    .dark-mode .glass {
+      background: rgba(40, 30, 60, 0.75);
+      border-color: #ff9de2;
+    }
+
+    .floaty {
+      animation: floaty 3s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+.pink-theme{
+  background: linear-gradient(
+    135deg,
+    #ffe4ec,
+    #ffd6e7
+  );
+}
+
+.lavender-theme{
+  background: linear-gradient(
+    135deg,
+    #ede9fe,
+    #d8b4fe
+  );
+}
+
+.white-theme{
+  background: #ffffff;
+}
+
+.dark-theme{
+  background: #1f2937;
+  color: white;
+  filter:brightness(0.75);
+}
+
+.themeButtons{
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.themeButtons button{
+  min-width: 130px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+/* =========================
+   BRO MODE ⚫⚪
+========================= */
+
+.bro-theme{
+  background: linear-gradient(
+    135deg,
+    #0f0f0f,
+    #1a1a1a,
+    #2d2d2d
+  );
+  color: #f5f5f5;
+}
+
+/* Main Cards */
+
+.bro-theme .glass{
+  background: rgba(35,35,35,0.90);
+  border-color: #6b7280;
+}
+
+/* Headings */
+
+.bro-theme h2,
+.bro-theme h3{
+  color: #ffffff !important;
+}
+
+/* Normal Text */
+
+.bro-theme p{
+  color: #d1d5db !important;
+}
+
+/* Buttons */
+
+.bro-theme button{
+  background: #374151 !important;
+  color: #ffffff !important;
+  border: 1px solid #6b7280;
+}
+
+.bro-theme button:hover{
+  background: #4b5563 !important;
+}
+
+/* Light Grey Cards */
+
+.bro-theme .bg-pink-50{
+  background: #d1d5db !important;
+}
+
+/* Inputs */
+
+.bro-theme input,
+.bro-theme textarea{
+  background: #e5e7eb !important;
+  color: #111111 !important;
+  border-color: #9ca3af !important;
+}
+
+/* Pink Text → White */
+
+.bro-theme .text-pink-500,
+.bro-theme .text-pink-600,
+.bro-theme .text-pink-700{
+  color: #ffffff !important;
+}
+
+/* Borders */
+
+.bro-theme .border-pink-200{
+  border-color: #6b7280 !important;
+}
+
+/* =========================
+   MOTIVATION CARD
+========================= */
+
+.bro-theme #motivationTitle,
+.bro-theme #motivationTitle + p{
+  color: #111111 !important;
+}
+
+/* =========================
+   ACADEMIC TRACKER RECORDS
+========================= */
+
+.bro-theme #academicRecordsList,
+.bro-theme #academicRecordsList *,
+.bro-theme #highestMarks,
+.bro-theme #averageMarks,
+.bro-theme #improvement{
+  color: #111111 !important;
+}
+
+/* =========================
+   STUDY TRACKER TEXT
+========================= */
+
+.bro-theme #studyTrackerContainer,
+.bro-theme #studyTrackerContainer *{
+  color: #111111 !important;
+}
+
+/* =========================
+   PROGRESS BARS
+========================= */
+
+.bro-theme .bg-pink-400{
+  background: #4b5563 !important;
+}
+
+/* =========================
+   MOOD BUTTONS
+========================= */
+
+.bro-theme .moodBtn{
+  background: #d1d5db !important;
+  color: #111111 !important;
+}
+
+/* Bro Mode Date Card */
+
+.bro-theme #dateWeatherCard{
+  background: rgba(35,35,35,0.90) !important;
+  border-color: #6b7280 !important;
+}
+
+.bro-theme #todayDate,
+.bro-theme #userLocation,
+.bro-theme #weatherInfo{
+  color: #ffffff !important;
+}
+
+.sparkle {
+  position: fixed;
+  font-size: 18px;
+  animation: sparkleFloat 900ms ease-out forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes sparkleFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.bounce-boost {
+  animation: floaty 0.6s ease-in-out 3;
+}
+
+
+#stickyHeader{
+  touch-action:none;
+}
+
+#pinkflowLogo{
+  color: #ec4899 !important;
+}
+
+/* Login screen always pink */
+
+#authScreen{
+  background: #fce7f3 !important;
+}
+
+#authScreen h2{
+  color: #ec4899 !important;
+}
+
+#authScreen input{
+  background: white !important;
+  color: black !important;
+}
+
+#authScreen button{
+  color: white !important;
+}
+
+/* Keep PinkFlow bow pink in all themes */
+
+#pinkflowBow{
+  background: #f472b6 !important;
+  color: white !important;
+}
+
+/* Sticky note controls always stay yellow */
+
+.sticky-control-btn{
+  background: #fde047 !important;
+  color: black !important;
+}
+
+.sticky-control-btn:hover{
+  background: #facc15 !important;
+}
+
+/* Cute Background Layer */
+
+#cuteBackground{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:4;
+  transition:opacity 0.4s ease;
+}
+
+/* Hide cute decorations in Bro Mode */
+
+.bro-theme #cuteBackground{
+  display:none;
+}
+
+/* Individual decorations */
+
+.cutePrint{
+  position:absolute;
+  font-size:55px;
+  opacity:0.4;
+  filter: blur(1px);
+  animation: floatDecor 6s ease-in-out infinite;
+}
+
+@keyframes floatDecor{
+  0%,100%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-12px);
+  }
+}
+
+.cutePrint:nth-child(1){top:5%;left:8%;}
+.cutePrint:nth-child(2){top:15%;left:85%;}
+.cutePrint:nth-child(3){top:30%;left:12%;}
+.cutePrint:nth-child(4){top:22%;left:60%;}
+.cutePrint:nth-child(5){top:45%;left:80%;}
+.cutePrint:nth-child(6){top:60%;left:15%;}
+
+.cutePrint:nth-child(7){top:75%;left:75%;}
+.cutePrint:nth-child(8){top:85%;left:25%;}
+.cutePrint:nth-child(9){top:10%;left:40%;}
+.cutePrint:nth-child(10){top:50%;left:45%;}
+.cutePrint:nth-child(11){top:80%;left:55%;}
+.cutePrint:nth-child(12){top:65%;left:90%;}
+
+.max-w-7xl{
+  position:relative;
+  z-index:1;
+}
+
+.navBtn{
+  background:#f9a8d4;
+  color:white;
+  padding:10px 14px;
+  border-radius:16px;
+  width:100%;
+  text-align:left;
+  transition:0.3s;
+}
+
+.navBtn:hover{
+  background:#ec4899;
+}
+
+.sectionGlow{
+
+  animation: sectionGlow 3s ease;
+
+}
+
+@keyframes sectionGlow{
+
+  0%{
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(236,72,153,0);
+  }
+
+  50%{
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(236,72,153,0.5);
+  }
+
+  100%{
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(236,72,153,0);
+  }
+
+}
+
+/* Hide button on desktop */
+#plannerToggle {
+  display: none;
+}
+
+/* Mobile/iPhone only */
+@media (max-width: 768px) {
+
+  #plannerToggle {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #plannerSection {
+    display: none;
+  }
+
+  #plannerSection.open {
+    display: block;
+  }
+}
+
+.plannerToggleCard{
+  background: rgba(255, 246, 123, 0.8);
+  border: 2px solid #f3d8ff;
+  border-radius: 18px;
+  padding: 14px;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+  margin-top: 12px;
+  transition: all 0.3s ease;
+}
+
+.plannerToggleCard:hover{
+  transform: translateY(-2px);
+}
+
+
+.dashboardBtn{
+  width:70px;
+  height:59px;
+  border:none;
+  border-radius:16px;
+  cursor:pointer;
+
+  background:linear-gradient(
+    135deg,
+    #ffc3ed,
+    #ffb5f3
+  );
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.08);
+
+  font-size:20px;
+
+  transition:3s;
+}
+
+.dashboardbtn:hover{
+  transform:translateY(-2px);
+}
+
+  </style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body class="pink-theme min-h-screen text-pink-900 font-sans p-6 overflow-x-hidden">
+
+<div id="cuteBackground"></div>
+
+  <div id="authScreen"
+class="fixed inset-0 bg-pink-100 flex items-center justify-center z-50">
+
+  <div class="bg-white p-8 rounded-3xl shadow-xl w-96">
+
+    <h2 class="text-3xl font-bold mb-5 text-center">
+      PinkFlow Login 🎀
+    </h2>
+
+    <input
+      id="email"
+      type="email"
+      placeholder="Email"
+      class="w-full p-3 border rounded-xl mb-3">
+
+    <input
+      id="password"
+      type="password"
+      placeholder="Password"
+      class="w-full p-3 border rounded-xl mb-3">
+
+    <button
+      id="loginBtn"
+      class="w-full bg-pink-400 text-white p-3 rounded-xl mb-2">
+
+      Login
+    </button>
+
+    <button
+      id="signupBtn"
+      class="w-full bg-purple-400 text-white p-3 rounded-xl">
+
+      Create Account
+    </button>
+
+  </div>
+
+</div>
+
+<div class="w-full">
+  
+    <!-- Sidebar -->
+    <div 
+    id="sidebar"
+    class="glass lg:col-span-1 bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200 floaty">
+
+      <div class="flex items-center gap-3 mb-8">
+        <div
+           id="pinkflowBow"
+           class="w-12 h-12 rounded-2xl bg-pink-400 flex items-center justify-center text-white text-2xl shadow-md">
+            🎀
+        </div>
+
+        <div>
+          <h1 id="pinkflowLogo" class="text-3xl font-extrabold">
+            PinkFlow ✨
+          </h1>
+          <p class="text-sm text-pink-600 italic">
+            your productivity world 🌷
+          </p>
+
+         <button
+  id="menuToggleBtn"
+  class="mt-4 bg-pink-300 hover:bg-pink-400 text-white px-4 py-2 rounded-2xl w-full">
+  ☰ Menu
+</button>
+<div
+  id="navMenu"
+  class="hidden mt-4 space-y-2">
+
+  <button class="navBtn w-full bg-pink-100 p-3 rounded-xl"
+    onclick="document.getElementById('tasksSection').scrollIntoView({behavior:'smooth'})">
+    ✅ Tasks
+  </button>
+
+  <button class="navBtn w-full bg-pink-100 p-3 rounded-xl"
+    onclick="document.getElementById('pomodoroSection').scrollIntoView({behavior:'smooth'})">
+    ⏳ Pomodoro
+  </button>
+
+  <button class="navBtn w-full bg-pink-100 p-3 rounded-xl"
+    onclick="document.getElementById('studySection').scrollIntoView({behavior:'smooth'})">
+    📚 Study Tracker
+  </button>
+
+  <button class="navBtn w-full bg-pink-100 p-3 rounded-xl"
+    onclick="document.getElementById('vaultSection').scrollIntoView({behavior:'smooth'})">
+    📂 Academic Vault
+  </button>
+
+  <button class="navBtn w-full bg-pink-100 p-3 rounded-xl"
+    onclick="document.getElementById('plannerSection').scrollIntoView({behavior:'smooth'})">
+    📅 Planner
+  </button>
+
+  <button class="navBtn w-full bg-pink-100 p-3 rounded-xl"
+    onclick="document.getElementById('academicSection').scrollIntoView({behavior:'smooth'})">
+    📊 Academic Tracker
+  </button>
+
+  <button class="navBtn w-full bg-pink-100 p-3 rounded-xl"
+    onclick="document.getElementById('visionSection').scrollIntoView({behavior:'smooth'})">
+    💖 Vision Board
+  </button>
+
+</div>
+
+</div>
+</div>
+
+
+<button id="studyShopBtn" class="dashboardBtn">
+   🛍️Shop
+</button>
+
+<!-- PROFILE CARD START -->
+
+<div class="mt-6 bg-pink-50 rounded-3xl p-4 text-center">
+
+  <div
+  id="profileAvatar"
+  class="text-7xl text-center mt-2 animate-bounce">
+  🧚‍♀️
+</div>
+
+  <div id="settingsBox" style="margin-top: 20px;">
+  
+  <input
+  type="text"
+  id="edit-username"
+  placeholder="Hiii! what's your name? Enter here!"
+  class="w-1/2 p-2 rounded-xl border border-pink-200 mx-auto block"
+/>
+
+<button
+  id="saveUsernameBtn"
+  class="block mt-3 mx-auto bg-pink-300 hover:bg-pink-400 text-white px-4 py-2 rounded-2xl">
+  💖 Save Username
+</button>
+
+  <p id="update-status"></p>
+
+</div>
+
+  <p id="user-email">user@email.com</p>
+
+  <button
+    id="logoutBtn"
+    class="mt-3 bg-red-300 hover:bg-red-400 text-white px-4 py-2 rounded-2xl">
+
+    🚪 Logout
+
+  </button>
+
+</div>
+
+<!-- PROFILE CARD END -->
+
+      <div class="mt-10 bg-gradient-to-r from-pink-200 to-rose-200 rounded-3xl p-5">
+        <p
+          id="motivationTitle"
+          class="font-semibold">
+          Daily Motivation 💖
+      </p>
+
+        <p class="mt-2 text-sm">
+          Tiny steps every day create magical results.
+        </p>
+      </div>
+    </div>
+
+    </div>
+
+    <!-- Main -->
+    <div class="lg:col-span-3 space-y-6">
+
+      <!-- Header -->
+      <div class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200">
+
+        <div class="flex flex-col md:flex-row justify-between gap-4">
+
+          <div>
+            <h2 id="greetingBanner" class="text-5xl font-extrabold text-pink-500">
+             🌸 Welcome Back, Princess
+           </h2>
+            <p
+  id="subtitleText"
+  class="text-pink-600 mt-2">
+  Stay soft, stay productive, stay magical ✨
+</p>
+          </div>
+
+              <div
+  id="dateWeatherCard"
+  class="mt-4 bg-pink-50 rounded-2xl p-4 border border-pink-200">
+
+  <p id="todayDate" class="font-semibold">
+    📅 Loading date...
+  </p>
+
+  <p id="userLocation" class="mt-1">
+    📍 Loading location...
+  </p>
+
+  <p id="weatherInfo" class="mt-1">
+    🌤 Loading weather...
+  </p>
+
+</div>
+
+<div class="flex flex-wrap gap-3">
+
+<div class="flex flex-wrap gap-2 themeButtons">
+
+<button
+  id="pinkThemeBtn"
+  class="bg-pink-300 hover:bg-pink-400 text-white px-4 py-2 rounded-2xl shadow-lg">
+  🌸 Pink
+</button>
+
+<button
+  id="lavenderThemeBtn"
+  class="bg-purple-300 hover:bg-purple-400 text-white px-4 py-2 rounded-2xl shadow-lg">
+  🧚 Lavender
+</button>
+
+<button
+  id="whiteThemeBtn"
+  class="bg-gray-100 hover:bg-gray-200 text-black px-4 py-2 rounded-2xl shadow-lg">
+  ☁ White
+</button>
+
+<button
+  id="darkThemeBtn"
+  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-2xl shadow-lg">
+  🌙 Dark
+</button>
+
+<button
+  id="broThemeBtn"
+  class="bg-black hover:bg-gray-900 text-white px-4 py-2 rounded-2xl shadow-lg">
+  🖤 Bro Mode
+</button>
+
+</div>
+      
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <div class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200">
+          <div class="text-4xl">✅</div>
+          <h3 class="mt-4 text-lg font-semibold">Tasks Done Today</h3>
+          <p
+            id="tasksSlayed"
+            class="text-3xl font-bold mt-2 text-pink-500">
+            0
+         </p>
+
+        </div>
+
+        <div class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200">
+          <div class="text-4xl">⏰</div>
+          <h3 class="mt-4 text-lg font-semibold">Focus Time</h3>
+        <p
+          id="focusQueen"
+         class="text-3xl font-bold mt-2 text-pink-500">
+         0m
+        </p>
+        </div>
+
+<div class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200">
+
+  <div class="text-4xl">💖</div>
+
+  <h3 class="mt-4 text-lg font-semibold">
+    Mood
+  </h3>
+
+  <p
+    id="moodDisplay"
+    class="text-3xl font-bold mt-2 text-pink-500">
+    Happy 🌸
+  </p>
+
+  <div class="flex flex-wrap gap-2 mt-4">
+
+    <button
+      class="moodBtn bg-yellow-100 px-3 py-2 rounded-xl hover:bg-yellow-200">
+      🌸 Happy
+    </button>
+
+    <button
+      class="moodBtn bg-yellow-100 px-3 py-2 rounded-xl hover:bg-yellow-200">
+      😴 Sleepy
+    </button>
+
+    <button
+      class="moodBtn bg-yellow-100 px-3 py-2 rounded-xl hover:bg-yellow-200">
+      📚 Productive
+    </button>
+
+    <button
+      class="moodBtn bg-yellow-100 px-3 py-2 rounded-xl hover:bg-yellow-200">
+      😭 Stressed
+    </button>
+
+    <button
+      class="moodBtn bg-yellow-100 px-3 py-2 rounded-xl hover:bg-yellow-200">
+      ✨ Motivated
+    </button>
+
+  </div>
+
+</div>
+
+      </div>
+
+      <!-- Tasks -->
+      <div 
+      id="tasksSection"
+      class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200">
+
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-2xl font-bold">
+            Today's Tasks ✨
+          </h3>
+
+            <button
+              onclick="addTask()"
+              class="bg-pink-400 hover:bg-pink-500 text-white px-5 py-3 rounded-2xl shadow-lg">
+              🎀 Add Task
+            </button>
+
+
+        </div>
+
+        <div id="taskContainer" class="space-y-4">
+
+          
+        </div>
+      </div>
+
+      <!-- Bottom Grid -->
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Music -->
+        <div 
+        id="musicSection"
+        class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200">
+
+          <h3 class="text-2xl font-bold mb-4">
+            Lofi Music Corner 🎵
+          </h3>
+
+
+          <div class="text-center mt-4">
+
+  <!-- Song name -->
+   <div class="flex justify-center mb-4">
+
+  <iframe
+  style="border-radius:24px"
+  src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?utm_source=generator"
+  width="100%"
+  height="380"
+  frameBorder="0"
+  allowfullscreen=""
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
+</div>
+  <p id="songTitle" class="text-pink-500 font-semibold mb-3">
+    Cozy Study Beats 💖
+  </p>
+  
+</div>
+        </div>
+
+
+<!-- Timer -->
+<div 
+id="pomodoroSection"
+class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200">
+
+  <h3 class="text-2xl font-bold mb-6">
+    Pomodoro Timer ⏳
+  </h3>
+
+  <div class="flex flex-col items-center">
+
+    <div class="relative w-64 h-64">
+
+      <svg class="w-full h-full rotate-[-90deg]">
+
+        <circle
+          cx="128"
+          cy="128"
+          r="110"
+          stroke="#fbcfe8"
+          stroke-width="16"
+          fill="none"
+        />
+
+        <circle
+          id="progressCircle"
+          cx="128"
+          cy="128"
+          r="110"
+          stroke="#ec4899"
+          stroke-width="16"
+          fill="none"
+          stroke-linecap="round"
+          stroke-dasharray="691"
+          stroke-dashoffset="0"
+        />
+
+      </svg>
+
+      <div class="absolute inset-0 flex flex-col items-center justify-center">
+
+        <span
+          id="timerLabel"
+          class="text-lg text-pink-500 font-semibold mb-2">
+          Focus Time 💖
+        </span>
+
+        <span
+          id="timerDisplay"
+          class="text-6xl font-extrabold text-pink-500">
+          25:00
+        </span>
+
+      </div>
+    </div>
+
+    <div class="flex gap-4 mt-8">
+
+      <button
+        id="startBtn"
+        class="bg-pink-400 hover:bg-pink-500 text-white px-6 py-3 rounded-2xl shadow-lg">
+        ▶ Start
+      </button>
+
+      <button
+        id="pauseBtn"
+        class="bg-yellow-300 hover:bg-yellow-400 text-white px-6 py-3 rounded-2xl shadow-lg">
+        ⏸ Pause
+      </button>
+
+      <button
+        id="resetBtn"
+        class="bg-purple-300 hover:bg-purple-400 text-white px-6 py-3 rounded-2xl shadow-lg">
+        🔄 Reset
+      </button>
+
+    </div>
+</div>
+</div>
+
+    
+
+<!-- Study Tracker -->
+
+<div 
+id="studySection"
+class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200">
+
+  <div class="flex justify-between items-center mb-6">
+
+    <h3 class="text-2xl font-bold">
+      Study Tracker 📚
+    </h3>
+
+    <button
+      id="resetTrackerBtn"
+      class="bg-pink-300 hover:bg-pink-400 text-white px-4 py-2 rounded-2xl">
+      🔄 Reset
+    </button>
+
+  </div>
+
+  <!-- Add Subject -->
+
+  <div class="flex gap-3 mb-6">
+
+    <input
+      id="subjectInput"
+      type="text"
+      placeholder="Add subject ✨"
+      class="flex-1 px-4 py-3 rounded-2xl border border-pink-200 bg-pink-50 outline-none"/>
+
+    <button
+      id="addSubjectBtn"
+      class="bg-pink-400 hover:bg-pink-500 text-white px-5 py-3 rounded-2xl">
+      ➕ Add
+    </button>
+
+  </div>
+
+  <!-- Subjects -->
+
+  <div
+    id="studyTrackerContainer"
+    class="space-y-5">
+
+  </div>
+</div>
+
+<!-- Academic Vault -->
+
+<div 
+id="vaultSection"
+class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200">
+
+  <h3 class="text-2xl font-bold mb-6">
+    📚 Academic Vault
+  </h3>
+
+  <!-- Course -->
+
+  <div class="flex gap-3 mb-4">
+
+    <input
+      id="courseFolderInput"
+      type="text"
+      placeholder="Create Course Folder"
+      class="flex-1 p-3 rounded-2xl border border-pink-200">
+
+    <button
+      id="addCourseBtn"
+      class="bg-pink-400 text-white px-5 py-3 rounded-2xl">
+
+      ➕ Course
+    </button>
+
+  </div>
+
+  <div id="academicVault"></div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- Calendar Planner -->
+
+<div 
+id="plannerSection"
+class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200 mt-6">
+
+  <div class="flex justify-between items-center mb-6">
+
+    <h3 class="text-2xl font-bold">
+      Monthly Planner 📅
+    </h3>
+
+    <span
+      id="currentMonth"
+      class="text-pink-500 font-semibold">
+    </span>
+
+  </div>
+
+  <div
+  id="calendarGrid"
+  class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+</div>
+
+</div>
+
+<button id="plannerToggle" class="plannerToggleCard">
+  📅 Show Planner
+</button>
+
+<div id="plannerSection">
+  ...
+</div>
+
+
+<!-- Planner Popup -->
+
+<div
+  id="plannerPopup"
+  class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+
+<div class="bg-white rounded-3xl p-4 md:p-6 w-[95%] max-w-2xl shadow-2xl">
+
+    <div class="flex justify-between items-start mb-4">
+
+      <h3 class="text-2xl font-bold text-pink-500">
+        📅 Day Note
+      </h3>
+
+      <button
+        id="closePopup"
+        class="bg-pink-300 px-4 py-2 rounded-xl">
+        ✖
+      </button>
+
+    </div>
+
+    <textarea
+      id="popupTextarea"
+      class="w-full h-80 bg-pink-50 rounded-2xl p-4 outline-none resize-none">
+    </textarea>
+
+    
+</div>
+
+</div>
+
+  
+<!-- Academic Tracker -->
+
+<div 
+id="academicSection"
+class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200">
+
+  <h3 class="text-2xl font-bold mb-6">
+    📊 Academic Tracker
+  </h3>
+
+  <input
+    id="semesterInput"
+    type="text"
+    placeholder="Semester / Class"
+    class="w-full px-4 py-3 rounded-2xl border border-pink-200 bg-pink-50 mb-3 outline-none"
+  >
+
+
+  <input
+    id="marksInput"
+    type="number"
+    placeholder="SGPA / Marks"
+    class="w-full px-4 py-3 rounded-2xl border border-pink-200 bg-pink-50 mb-3 outline-none"
+  >
+
+  <button
+    id="saveMarksBtn"
+    class="bg-pink-400 hover:bg-pink-500 text-white px-5 py-3 rounded-2xl">
+    🌸 Save Marks
+  </button>
+
+  <div class="grid grid-cols-3 gap-3 mt-4">
+
+  <div class="bg-pink-50 p-3 rounded-2xl text-center">
+    <p class="text-sm">🏆 Highest</p>
+    <p id="highestMarks" class="font-bold text-pink-500">0</p>
+  </div>
+
+  <div class="bg-pink-50 p-3 rounded-2xl text-center">
+    <p class="text-sm">📊 Average</p>
+    <p id="averageMarks" class="font-bold text-pink-500">0</p>
+  </div>
+
+  <div class="bg-pink-50 p-3 rounded-2xl text-center">
+    <p class="text-sm">📈 Progress</p>
+    <p id="improvement" class="font-bold text-pink-500">0</p>
+  </div>
+
+</div>
+
+<canvas
+  id="marksChart"
+  class="mt-6">
+</canvas>
+
+<div
+  id="academicRecordsList"
+  class="mt-6 space-y-2">
+</div>
+
+</div>
+
+
+
+ 
+<!-- Vision Board -->
+
+<div 
+id="visionSection"
+class="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-pink-200 mt-6">
+
+  <div class="flex justify-between items-center mb-6">
+
+    <h3 class="text-2xl font-bold">
+      Vision Board 💖
+    </h3>
+
+    <label
+      class="bg-pink-400 hover:bg-pink-500 text-white px-5 py-3 rounded-2xl cursor-pointer">
+
+      📸 Add Vision
+
+      <input
+        id="visionUpload"
+        type="file"
+        accept="image/*"
+        class="hidden">
+    </label>
+
+  </div>
+
+  <div
+    id="visionBoard"
+    class="grid md:grid-cols-3 gap-6">
+  </div>
+
+</div>
+
+ <!-- Sticky Notes -->
+
+<div
+  id="stickyNote"
+  class="fixed z-50 w-64 bg-yellow-200 p-5 rounded-3xl shadow-2xl border-4 border-yellow-300"
+  style="top:100px; right:20px;">
+
+  <div
+    id="stickyHeader"
+    class="flex justify-between items-center cursor-move">
+
+    <h3 class="font-bold text-lg text-pink-700">
+      Sticky Notes 🎀
+    </h3>
+
+    <button
+  id="minimizeStickyBtn"
+  class="sticky-control-btn px-3 py-1 rounded-xl text-xl">
+  ➖
+</button>
+  </div>
+
+  <div id="stickyContent">
+
+    <textarea
+      class="w-full h-40 mt-3 bg-yellow-100 rounded-2xl p-3 outline-none resize-none"
+      placeholder="Write down your thoughts here... 💖">
+    </textarea>
+
+  </div>
+
+</div>
+
+  <!-- Firebase -->
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  deleteDoc,
+  doc,
+  getDoc,
+  setDoc,
+  query,
+  where,
+  updateDoc
+} 
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQk--C2NI0CYvfoMaz-WvpUwxi2PJOEJM",
+      authDomain: "pinkflow-f0790.firebaseapp.com",
+      projectId: "pinkflow-f0790",
+      storageBucket: "pinkflow-f0790.firebasestorage.app",
+      messagingSenderId: "355559231039",
+      appId: "1:355559231039:web:c4b450e8cd24637953b28a"
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const auth = getAuth(app);
+
+let academicChart = null;
+
+document
+  .getElementById("logoutBtn")
+  .addEventListener("click", async () => {
+
+    try {
+
+      await signOut(auth);
+
+    } catch (error) {
+
+      alert(error.message);
+
+    }
+
+  });
+
+document
+.getElementById("signupBtn")
+.addEventListener("click", async () => {
+
+  const email =
+    document.getElementById("email").value;
+
+  const password =
+    document.getElementById("password").value;
+
+  try {
+
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    const user = userCredential.user;
+
+await setDoc(doc(db, "users", user.uid), {
+  username: "user",
+  email: email
+});
+
+    alert("Account created 💖");
+
+  } catch(error) {
+
+    alert(error.message);
+
+  }
+
+});
+
+document
+.getElementById("loginBtn")
+.addEventListener("click", async () => {
+
+  const email =
+    document.getElementById("email").value;
+
+  const password =
+    document.getElementById("password").value;
+
+  try {
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  } catch(error) {
+
+    alert(error.message);
+
+  }
+
+});
+
+onAuthStateChanged(auth, (user) => {
+
+  const authScreen =
+    document.getElementById("authScreen");
+
+  const sticky =
+    document.getElementById("stickyNote");
+
+  const emailText =
+    document.getElementById("user-email"); // ✅ ADD THIS
+
+  if (user) {
+
+    const userRef = doc(db, "users", user.uid);
+
+getDoc(userRef).then((snap) => {
+  if (snap.exists()) {
+    const data = snap.data();
+
+    const input = document.getElementById("edit-username");
+
+    if (input) {
+      input.value = data.username;
+    }
+  }
+});
+
+    authScreen.style.display = "none";
+
+    if (sticky)
+      sticky.style.display = "block";
+
+        loadAcademicGraph(user.uid);
+
+    // ✅ THIS IS THE IMPORTANT PART
+    if (emailText) {
+      emailText.textContent = user.email;
+    }
+
+  } else {
+
+    authScreen.style.display = "flex";
+
+    if (sticky)
+      sticky.style.display = "none";
+
+    // reset email when logged out
+    if (emailText) {
+      emailText.textContent = "user@email.com";
+    }
+  }
+
+});
+
+    async function saveTask(taskText) {
+
+      try {
+
+const docRef = await addDoc(
+  collection(db, "tasks"),
+  {
+    text: taskText,
+    created: new Date()
+  }
+);
+
+return docRef.id;
+
+        console.log("Task Saved 💖");
+
+      } catch (error) {
+
+        console.error(error);
+
+      }
+    }
+
+window.editAcademicRecord =
+async function(semester){
+
+  const newMarks =
+    prompt(
+      "Enter new marks:"
+    );
+
+  if(!newMarks) return;
+
+  const q =
+    query(
+      collection(
+        db,
+        "academicRecords"
+      )
+    );
+
+  onSnapshot(q, async(snapshot)=>{
+
+    snapshot.forEach(async(docSnap)=>{
+
+      const data =
+        docSnap.data();
+
+      if(
+        data.semester ==
+          semester &&
+        data.uid ==
+          auth.currentUser.uid
+      ){
+
+        await updateDoc(
+          doc(
+            db,
+            "academicRecords",
+            docSnap.id
+          ),
+          {
+            marks:
+              Number(
+                newMarks
+              )
+          }
+        );
+
+      }
+
+    });
+
+  });
+
+}
+
+    // Save Academic Record
+
+document
+  .getElementById("saveMarksBtn")
+  .addEventListener("click", async () => {
+
+    const semester =
+      document.getElementById("semesterInput").value;
+
+    const marks =
+      document.getElementById("marksInput").value;
+
+    const user = auth.currentUser;
+
+    if (!user) return;
+
+    if (!semester || !marks) {
+      alert("Fill all fields 🌸");
+      return;
+    }
+
+    try {
+
+      await addDoc(
+        collection(db, "academicRecords"),
+        {
+          uid: user.uid,
+          semester: semester,
+          marks: Number(marks),
+          created: new Date()
+        }
+      );
+
+      document.getElementById("semesterInput").value = "";
+      document.getElementById("marksInput").value = "";
+
+    } catch(error) {
+
+      alert(error.message);
+
+    }
+
+});
+
+function loadAcademicGraph(userId) {
+
+  const q = query(
+    collection(db, "academicRecords")
+  );
+
+  onSnapshot(q, (snapshot) => {
+
+    const records = [];
+
+snapshot.forEach((doc) => {
+
+  const data = doc.data();
+
+  if (data.uid === userId) {
+
+    records.push({
+      semester: Number(data.semester),
+      marks: data.marks
+    });
+
+  }
+
+});
+
+records.sort((a, b) => a.semester - b.semester);
+
+const labels = records.map(r => r.semester);
+const marks = records.map(r => r.marks);
+
+const highest =
+  Math.max(...marks, 0);
+
+document.getElementById(
+  "highestMarks"
+).textContent = highest;
+
+const average =
+  marks.length
+    ? (
+        marks.reduce(
+          (a,b)=>a+b,
+          0
+        ) / marks.length
+      ).toFixed(2)
+    : 0;
+
+document.getElementById(
+  "averageMarks"
+).textContent = average;
+
+let improvement = 0;
+
+if (marks.length >= 2) {
+
+  improvement =
+    marks[marks.length - 1]
+    -
+    marks[marks.length - 2];
+
+}
+
+document.getElementById(
+  "improvement"
+).textContent =
+  improvement >= 0
+    ? "+" + improvement.toFixed(5) + " ✨"
+    : improvement.toFixed(5);
+
+    const recordsList =
+  document.getElementById(
+    "academicRecordsList"
+  );
+
+recordsList.innerHTML = "";
+
+records.forEach(record => {
+
+  recordsList.innerHTML += `
+
+    <div
+      class="bg-pink-50 p-3 rounded-2xl flex justify-between items-center">
+
+      <span>
+        Semester ${record.semester}
+        —
+        ${record.marks}
+      </span>
+
+      <button
+        onclick="editAcademicRecord('${record.semester}')"
+        class="bg-yellow-300 px-3 py-1 rounded-xl">
+        ✏️
+      </button>
+
+    </div>
+
+  `;
+
+});
+
+    const ctx =
+      document
+      .getElementById("marksChart")
+      .getContext("2d");
+
+    if (academicChart) {
+      academicChart.destroy();
+    }
+
+    academicChart = new Chart(ctx, {
+
+      type: "line",
+
+      data: {
+
+        labels: labels,
+
+        datasets: [{
+
+          label: "SGPA / Marks",
+
+          data: marks,
+
+          borderColor: "#ec4899",
+
+          backgroundColor: "#f9a8d4",
+
+          tension: 0.4,
+
+          fill: false
+
+        }]
+      }
+
+    });
+
+  });
+
+}
+
+const body = document.body;
+
+function updateCuteBackground(theme){
+
+  const bg =
+    document.getElementById("cuteBackground");
+
+  if(!bg) return;
+
+  let emojis = [];
+
+  if(theme === "pink-theme"){
+
+    emojis = [
+      "🎀","🌸","💖","🦋",
+      "✨","🧸","🌷","🎀",
+      "🌸","🦋","💖","🌷"
+    ];
+
+  }
+
+  else if(theme === "lavender-theme"){
+
+    emojis = [
+      "🪻","🌙","⭐","🔮",
+      "☁️","🦄","💜","🪻",
+      "⭐","🌙","🔮","☁️"
+    ];
+
+  }
+
+  else if(theme === "white-theme"){
+
+    emojis = [
+      "🤍","☁️","🕊️","🫧",
+      "✨","🌼","🤍","☁️",
+      "🕊️","🫧","✨","🌼"
+    ];
+
+  }
+
+  else if(theme === "dark-theme"){
+
+    emojis = [
+      "🌙","⭐","💫","☄️",
+      "🌌","✨","🌙","⭐",
+      "💫","☄️","🌌","✨"
+    ];
+
+  }
+
+  else if(theme === "bro-theme"){
+
+    bg.innerHTML = "";
+    return;
+
+  }
+
+  bg.innerHTML = "";
+
+  emojis.forEach((emoji)=>{
+
+    bg.innerHTML +=
+      `<span class="cutePrint">${emoji}</span>`;
+
+  });
+
+}
+
+function setTheme(theme){
+
+  body.className =
+    body.className
+      .replace(
+        /pink-theme|lavender-theme|white-theme|dark-theme|bro-theme/g,
+        ""
+      )
+      .trim();
+
+  body.classList.add(theme);
+
+  localStorage.setItem(
+    "theme",
+    theme
+  );
+
+updateCuteBackground(theme);
+
+}
+
+function spawnSparkles(x, y) {
+  const emojis = ["✨", "💖", "🌸", "💫", "⭐"];
+
+  for (let i = 0; i < 12; i++) {
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = 80 + Math.random() * 60;
+
+    s.style.left = x + "px";
+    s.style.top = y + "px";
+    s.style.setProperty("--x", Math.cos(angle) * distance + "px");
+    s.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+    document.body.appendChild(s);
+
+    setTimeout(() => s.remove(), 900);
+  }
+}
+
+document.getElementById("pinkThemeBtn")
+.addEventListener("click", (e) => {
+
+  setTheme("pink-theme");
+
+  document.getElementById("greetingBanner").innerText =
+    "🌸 Welcome Back, Princess";
+
+  document.getElementById("subtitleText").innerText =
+    "Stay soft, stay productive, stay magical ✨";
+
+
+  const avatar = document.getElementById("profileAvatar");
+  avatar.innerText = "🧚‍♀️";
+
+  // 💖 bounce animation
+  avatar.classList.remove("bounce-boost");
+  void avatar.offsetWidth; // restart animation trick
+  avatar.classList.add("bounce-boost");
+
+  document.getElementById("motivationTitle").innerText =
+    "Daily Motivation 💖";
+
+    document.querySelector("#motivationTitle + p").innerText =
+  "Tiny steps every day create magical results.";
+
+  // ✨ sparkle burst near avatar
+  const rect = avatar.getBoundingClientRect();
+  spawnSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+
+});
+
+document
+.getElementById("lavenderThemeBtn")
+.addEventListener("click",()=>{
+
+  setTheme("lavender-theme");
+
+});
+
+document
+.getElementById("whiteThemeBtn")
+.addEventListener("click",()=>{
+
+  setTheme("white-theme");
+
+});
+
+document
+.getElementById("darkThemeBtn")
+.addEventListener("click",()=>{
+
+  setTheme("dark-theme");
+
+});
+
+document
+.getElementById("broThemeBtn")
+.addEventListener("click",()=>{
+
+  setTheme("bro-theme");
+
+  document.getElementById("greetingBanner").innerText =
+    "👑 Welcome Back, King";
+
+  document.getElementById("subtitleText").innerText =
+    "Stay focused. Stay disciplined. Execute.";
+
+  document.getElementById("profileAvatar").innerText =
+    "🦅";
+
+  document.getElementById("motivationTitle").innerText =
+    "Daily Mission ⚡";
+
+  const broQuotes = [
+
+    "Discipline beats motivation. ⚡",
+
+    "No excuses. Just results. 🏆",
+
+    "Stay focused. Stay dangerous. 🦅",
+
+    "Earn your confidence daily. 👑",
+
+    "Small wins create big victories. 🎯",
+
+    "Do what others won't. 💪",
+
+    "Consistency builds kings. ⚔️",
+
+    "Comfort is the enemy of growth. 🔥"
+
+  ];
+
+  document.querySelector("#motivationTitle + p").innerText =
+    broQuotes[
+      Math.floor(Math.random() * broQuotes.length)
+    ];
+
+});
+const savedTheme =
+localStorage.getItem("theme");
+
+if(savedTheme){
+
+  setTheme(savedTheme);
+
+  updateCuteBackground(savedTheme);
+
+}
+    window.saveTask = saveTask;
+
+document.getElementById("saveUsernameBtn").addEventListener("click", async () => {
+
+  const user = auth.currentUser;
+
+  const newName = document.getElementById("edit-username").value;
+
+  const status = document.getElementById("update-status");
+
+  if (!user) {
+    status.textContent = "Not logged in";
+    return;
+  }
+
+  try {
+
+    const userRef = doc(db, "users", user.uid);
+
+    await setDoc(userRef, {
+  username: newName
+}, { merge: true });
+
+    status.textContent = "Username updated 💖";
+
+  } catch (error) {
+
+    status.textContent = error.message;
+
+  }
+
+});
+
+
+
+// ---------------- TASK SLAYED COUNTER ----------------
+
+const today =
+  new Date().toDateString();
+
+const savedDate =
+  localStorage.getItem("slayDate");
+
+// Reset next day
+
+if (savedDate !== today) {
+
+  localStorage.setItem("slayDate", today);
+
+  localStorage.setItem("tasksSlayed", 0);
+
+}
+
+// Current count
+
+let tasksSlayed =
+  parseInt(
+    localStorage.getItem("tasksSlayed")
+  ) || 0;
+
+// Update UI
+
+function updateSlayedCount() {
+
+  const counter =
+    document.getElementById("tasksSlayed");
+
+  if (counter) {
+
+    counter.innerText = tasksSlayed;
+
+  }
+
+}
+
+// First load
+
+window.addEventListener(
+  "DOMContentLoaded",
+  updateSlayedCount
+);
+
+ function listenTasks() {
+
+  const container =
+    document.getElementById("taskContainer");
+
+  onSnapshot(collection(db, "tasks"), (snapshot) => {
+
+    // clear old UI
+    container.innerHTML = "";
+
+    // rebuild UI from Firebase
+    snapshot.forEach((docSnap) => {
+
+      const data = docSnap.data();
+
+      displayTask(data.text, docSnap.id);
+
+    });
+
+  });
+
+}
+
+
+
+window.addEventListener("DOMContentLoaded", listenTasks);
+
+
+    // Show task on screen
+
+function displayTask(taskText, taskId) {
+
+  const container =
+    document.getElementById("taskContainer");
+
+  const taskCard =
+    document.createElement("div");
+
+  taskCard.className =
+    "bg-pink-50 rounded-2xl px-5 py-4 flex justify-between items-center";
+
+  taskCard.innerHTML = `
+    <p class="font-semibold text-pink-700 taskText">
+      ${taskText}
+    </p>
+
+<div class="flex gap-2">
+
+  <button class="doneBtn bg-white px-4 py-2 rounded-xl hover:bg-pink-100">
+    ✔ Done
+  </button>
+
+  <button class="deleteBtn bg-red-200 px-4 py-2 rounded-xl hover:bg-red-300">
+    🗑
+  </button>
+
+</div>
+  `;
+
+  container.appendChild(taskCard);
+
+  // Toggle complete
+
+  const doneBtn =
+    taskCard.querySelector(".doneBtn");
+
+  const deleteBtn =
+  taskCard.querySelector(".deleteBtn");
+
+  const taskTextElement =
+    taskCard.querySelector(".taskText");
+
+  let completed = false;
+
+  doneBtn.addEventListener("click", () => {
+
+    completed = !completed;
+
+if (completed) {
+
+  taskTextElement.classList.add(
+    "line-through",
+    "opacity-50"
+  );
+
+  taskCard.classList.add(
+    "bg-pink-100"
+  );
+
+  doneBtn.innerText = "Undo 💖";
+
+  container.appendChild(taskCard);
+
+  // Increase counter
+
+  tasksSlayed++;
+
+  localStorage.setItem(
+    "tasksSlayed",
+    tasksSlayed
+  );
+
+  updateSlayedCount();
+
+} else {
+
+  taskTextElement.classList.remove(
+    "line-through",
+    "opacity-50"
+  );
+
+  taskCard.classList.remove(
+    "bg-pink-100"
+  );
+
+  doneBtn.innerText = "✔ Done";
+
+  container.prepend(taskCard);
+
+  // Decrease counter
+
+  tasksSlayed--;
+
+  if (tasksSlayed < 0) {
+
+    tasksSlayed = 0;
+
+  }
+
+  localStorage.setItem(
+    "tasksSlayed",
+    tasksSlayed
+  );
+
+  updateSlayedCount();
+
+}
+  });
+
+// Delete task permanently
+
+deleteBtn.addEventListener("click", async () => {
+
+  // Remove from Firebase
+  await deleteDoc(doc(db, "tasks", taskId));
+
+  // Remove from screen
+  taskCard.remove();
+
+});
+
+}
+
+// Load saved tasks
+
+
+  </script>
+
+  <!-- Normal JS -->
+
+<script>
+
+  // ---------------- dynamic greeting----------------
+
+  const banner =
+  document.getElementById("greetingBanner");
+
+const greetings = [
+
+  "🌸 Welcome Back, Princess",
+  "✨ Ready to Shine Today?",
+  "💖 Time to Make Today Sparkle",
+  "🧚‍♀️ Your Magical Productivity Space",
+  "📚 Ready for a Cozy Study Session?",
+  "👑 Productivity Looks Good on You",
+  "🌷 Focus, Bloom, Repeat",
+  "🎀 Another Beautiful Day to Grow"
+
+];
+
+banner.innerText =
+  greetings[
+    Math.floor(
+      Math.random() * greetings.length
+    )
+  ];
+
+  // ---------------- ADD TASK ----------------
+
+  function addTask() {
+  const task = prompt("Enter your task ✨");
+
+  if (!task || task.trim() === "") return;
+
+  saveTask(task).then((taskId) => {
+    displayTask(task, taskId);
+  });
+}
+// ---------------- MOOD SYSTEM ----------------
+
+// Daily reset
+
+const todayMood =
+  new Date().toDateString();
+
+const savedMoodDate =
+  localStorage.getItem("moodDate");
+
+if (savedMoodDate !== todayMood) {
+
+  localStorage.setItem(
+    "moodDate",
+    todayMood
+  );
+
+  localStorage.setItem(
+    "savedMood",
+    "Happy 🌸"
+  );
+
+}
+
+// Elements
+
+const moodDisplay =
+  document.getElementById("moodDisplay");
+
+const moodButtons =
+  document.querySelectorAll(".moodBtn");
+
+// Load saved mood
+
+const savedMood =
+  localStorage.getItem("savedMood");
+
+if (savedMood) {
+
+  moodDisplay.innerText =
+    savedMood;
+
+}
+
+// Button clicks
+
+moodButtons.forEach((button) => {
+
+  button.addEventListener("click", () => {
+
+    const mood =
+      button.innerText;
+
+    moodDisplay.innerText =
+      mood;
+
+    localStorage.setItem(
+      "savedMood",
+      mood
+    );
+
+  });
+
+});
+
+// ---------------- ACADEMIC VAULT ----------------
+
+let academicVaultData =
+  JSON.parse(
+    localStorage.getItem("academicVaultData")
+  ) || {};
+
+const academicVault =
+  document.getElementById(
+    "academicVault"
+  );
+
+function saveAcademicVault() {
+
+  localStorage.setItem(
+    "academicVaultData",
+    JSON.stringify(academicVaultData)
+  );
+
+}
+
+document
+.getElementById("addCourseBtn")
+.addEventListener("click", () => {
+
+  const courseName =
+    document
+      .getElementById("courseFolderInput")
+      .value
+      .trim();
+
+  if (!courseName) return;
+
+  if (!academicVaultData[courseName]) {
+
+    academicVaultData[courseName] = {};
+
+  }
+
+  saveAcademicVault();
+
+  renderAcademicVault();
+
+});
+
+function renderAcademicVault() {
+
+  academicVault.innerHTML = "";
+
+  Object.keys(
+    academicVaultData
+  ).forEach((course) => {
+
+    const courseCard =
+      document.createElement("div");
+
+    courseCard.className =
+      "bg-pink-50 rounded-2xl p-4";
+
+   courseCard.innerHTML = `
+
+  <div class="flex justify-between items-center">
+
+    <div
+  class="courseHeader font-bold text-lg cursor-pointer flex justify-between items-center"
+  data-course="${course}">
+
+  <span>📂 ${course}</span>
+
+<span class="courseArrow">▶</span>
+
+</div>
+
+    <button
+      class="deleteCourseBtn bg-red-300 px-3 py-2 rounded-xl"
+      data-course="${course}">
+      🗑 Delete Course
+    </button>
+
+  </div>
+
+<div class="courseContent mt-3"
+style="display:none;">
+
+  <button
+    class="addSemesterBtn bg-purple-300 px-3 py-2 rounded-xl mt-3">
+    ➕ Add Semester
+  </button>
+
+  <div class="semesterContainer mt-4"></div>
+
+  </div>
+
+`;
+
+    academicVault.appendChild(courseCard);
+
+    const courseHeader =
+  courseCard.querySelector(".courseHeader");
+
+const courseContent =
+  courseCard.querySelector(".courseContent");
+
+const courseArrow =
+  courseCard.querySelector(".courseArrow");
+
+courseHeader.addEventListener("click", () => {
+
+  if(courseContent.style.display === "none"){
+
+    courseContent.style.display = "block";
+
+    courseArrow.innerText = "▼";
+
+  } else {
+
+    courseContent.style.display = "none";
+
+    courseArrow.innerText = "▶";
+
+  }
+
+});
+
+courseCard
+.querySelector(".deleteCourseBtn")
+.addEventListener("click", () => {
+
+  const confirmDelete =
+    confirm(
+      `Delete "${course}" and everything inside it?`
+    );
+
+  if (!confirmDelete) return;
+
+  delete academicVaultData[course];
+
+  saveAcademicVault();
+
+  renderAcademicVault();
+
+});
+
+    courseCard
+.querySelector(".addSemesterBtn")
+.addEventListener("click", () => {
+
+  const semester =
+    prompt(
+      "Semester / Exam Name"
+    );
+
+  if (!semester) return;
+
+  academicVaultData
+  [course]
+  [semester] = {};
+
+  saveAcademicVault();
+
+  renderAcademicVault();
+
+});
+
+const semesterContainer =
+  courseCard.querySelector(
+    ".semesterContainer"
+  );
+
+Object.keys(
+  academicVaultData[course]
+).forEach((semester) => {
+
+ semesterContainer.innerHTML += `
+
+  <div
+    class="bg-white p-3 rounded-xl mt-2">
+
+    <div class="flex justify-between items-center">
+
+  <div
+  class="semesterHeader flex justify-between items-center cursor-pointer">
+
+  <span>
+    📁 ${semester}
+  </span>
+
+  <span class="semesterArrow">
+    ▼
+  </span>
+
+</div>
+
+  <button
+    class="deleteSemesterBtn bg-red-300 px-2 py-1 rounded-xl"
+    data-course="${course}"
+    data-semester="${semester}">
+    🗑
+  </button>
+
+</div>
+
+
+
+<div class="semesterContent mt-2">
+
+    <button
+      class="addSubjectBtn bg-pink-300 px-3 py-2 rounded-xl mt-2"
+      data-course="${course}"
+      data-semester="${semester}">
+      ➕ Add Subject
+    </button>
+
+    <div
+      class="subjectContainer mt-3"
+      id="subject-${course}-${semester}">
+    </div>
+
+  </div>
+
+  </div>
+
+`;
+
+const semesterCard =
+  semesterContainer.lastElementChild;
+
+const semesterHeader =
+  semesterCard.querySelector(".semesterHeader");
+
+const semesterContent =
+  semesterCard.querySelector(".semesterContent");
+
+const semesterArrow =
+  semesterCard.querySelector(".semesterArrow");
+
+semesterHeader.addEventListener("click",()=>{
+
+  if(
+    semesterContent.style.display === "none"
+  ){
+
+    semesterContent.style.display = "block";
+
+    semesterArrow.innerText = "▼";
+
+  }else{
+
+    semesterContent.style.display = "none";
+
+    semesterArrow.innerText = "▶";
+
+  }
+
+});
+
+const subjectContainer =
+  semesterContainer.lastElementChild.querySelector(
+    ".subjectContainer"
+  );
+
+Object.keys(
+  academicVaultData[course][semester]
+).forEach((subject)=>{
+
+  subjectContainer.innerHTML += `
+
+  <div
+    class="bg-pink-50 p-3 rounded-xl mt-2">
+
+   <div class="flex justify-between items-center">
+
+  <div class="font-semibold">
+    📚 ${subject}
+  </div>
+
+  <button
+    class="deleteSubjectBtn bg-red-300 px-2 py-1 rounded-xl"
+    data-course="${course}"
+    data-semester="${semester}"
+    data-subject="${subject}">
+    🗑
+  </button>
+
+</div>
+
+    <button
+      class="addTopicBtn bg-green-300 px-3 py-2 rounded-xl mt-2"
+      data-course="${course}"
+      data-semester="${semester}"
+      data-subject="${subject}">
+      ➕ Add Topic
+    </button>
+
+    <div
+      class="topicContainer mt-2">
+    </div>
+
+  </div>
+
+`;
+
+const topicContainer =
+  subjectContainer
+  .lastElementChild
+  .querySelector(".topicContainer");
+
+academicVaultData
+[course]
+[semester]
+[subject]
+.forEach((topic)=>{
+
+  topicContainer.innerHTML += `
+
+<div
+  class="bg-white p-2 rounded-xl mt-1 flex justify-between items-center">
+
+  <span>
+    ✅ ${topic}
+  </span>
+
+  <div class="flex gap-2">
+
+    <button
+      class="editTopicBtn bg-yellow-300 px-2 py-1 rounded-lg"
+      data-course="${course}"
+      data-semester="${semester}"
+      data-subject="${subject}"
+      data-topic="${topic}">
+      ✏️
+    </button>
+
+    <button
+      class="deleteTopicBtn bg-red-300 px-2 py-1 rounded-lg"
+      data-course="${course}"
+      data-semester="${semester}"
+      data-subject="${subject}"
+      data-topic="${topic}">
+      🗑
+    </button>
+
+  </div>
+
+</div>
+
+`;
+
+});
+
+});
+
+const deleteSemesterBtns =
+  courseCard.querySelectorAll(
+    ".deleteSemesterBtn"
+  );
+
+deleteSemesterBtns.forEach((btn)=>{
+
+  btn.addEventListener("click",()=>{
+
+    const courseName =
+      btn.dataset.course;
+
+    const semesterName =
+      btn.dataset.semester;
+
+    const confirmDelete =
+      confirm(
+        `Delete ${semesterName}?`
+      );
+
+    if(!confirmDelete) return;
+
+    delete academicVaultData
+      [courseName]
+      [semesterName];
+
+    saveAcademicVault();
+
+    renderAcademicVault();
+
+  });
+
+});
+
+const deleteSubjectBtns =
+  courseCard.querySelectorAll(
+    ".deleteSubjectBtn"
+  );
+
+deleteSubjectBtns.forEach((btn)=>{
+
+  btn.addEventListener("click",()=>{
+
+    const courseName =
+      btn.dataset.course;
+
+    const semesterName =
+      btn.dataset.semester;
+
+    const subjectName =
+      btn.dataset.subject;
+
+    const confirmDelete =
+      confirm(
+        `Delete ${subjectName}?`
+      );
+
+    if(!confirmDelete) return;
+
+    delete academicVaultData
+      [courseName]
+      [semesterName]
+      [subjectName];
+
+    saveAcademicVault();
+
+    renderAcademicVault();
+
+  });
+
+});
+
+const addSubjectBtns =
+  courseCard.querySelectorAll(
+    ".addSubjectBtn"
+  );
+
+addSubjectBtns.forEach((btn)=>{
+
+  btn.addEventListener("click",()=>{
+
+    const courseName =
+      btn.dataset.course;
+
+    const semesterName =
+      btn.dataset.semester;
+
+    const subject =
+      prompt(
+        "Subject Name"
+      );
+
+    if(!subject) return;
+
+    academicVaultData
+    [courseName]
+    [semesterName]
+    [subject] = [];
+
+    saveAcademicVault();
+
+    renderAcademicVault();
+
+  });
+
+});
+
+const addTopicBtns =
+  courseCard.querySelectorAll(
+    ".addTopicBtn"
+  );
+
+addTopicBtns.forEach((btn)=>{
+
+  btn.addEventListener("click",()=>{
+
+    const courseName =
+      btn.dataset.course;
+
+    const semesterName =
+      btn.dataset.semester;
+
+    const subjectName =
+      btn.dataset.subject;
+
+    const topic =
+      prompt(
+        "Enter Syllabus Topic"
+      );
+
+    if(!topic) return;
+
+    academicVaultData
+    [courseName]
+    [semesterName]
+    [subjectName]
+    .push(topic);
+
+    saveAcademicVault();
+
+    renderAcademicVault();
+
+  });
+
+});
+
+const editTopicBtns =
+  courseCard.querySelectorAll(
+    ".editTopicBtn"
+  );
+
+editTopicBtns.forEach((btn)=>{
+
+  btn.addEventListener("click",()=>{
+
+    const courseName =
+      btn.dataset.course;
+
+    const semesterName =
+      btn.dataset.semester;
+
+    const subjectName =
+      btn.dataset.subject;
+
+    const oldTopic =
+      btn.dataset.topic;
+
+    const newTopic =
+      prompt(
+        "Edit Topic",
+        oldTopic
+      );
+
+    if(!newTopic) return;
+
+    const topics =
+      academicVaultData
+      [courseName]
+      [semesterName]
+      [subjectName];
+
+    const index =
+      topics.indexOf(oldTopic);
+
+    if(index !== -1){
+
+      topics[index] = newTopic;
+
+      saveAcademicVault();
+
+      renderAcademicVault();
+
+    }
+
+  });
+
+});
+
+const deleteTopicBtns =
+  courseCard.querySelectorAll(
+    ".deleteTopicBtn"
+  );
+
+deleteTopicBtns.forEach((btn)=>{
+
+  btn.addEventListener("click",()=>{
+
+    const courseName =
+      btn.dataset.course;
+
+    const semesterName =
+      btn.dataset.semester;
+
+    const subjectName =
+      btn.dataset.subject;
+
+    const topic =
+      btn.dataset.topic;
+
+    academicVaultData
+      [courseName]
+      [semesterName]
+      [subjectName] =
+      academicVaultData
+      [courseName]
+      [semesterName]
+      [subjectName]
+      .filter(t => t !== topic);
+
+    saveAcademicVault();
+
+    renderAcademicVault();
+
+  });
+
+});
+
+});
+
+  });
+
+}
+
+function loadDateAndWeather() {
+
+  // Date
+
+  const today = new Date();
+
+  document.getElementById("todayDate").innerText =
+    "📅 " +
+    today.toLocaleDateString(
+      "en-IN",
+      {
+        weekday:"long",
+        year:"numeric",
+        month:"long",
+        day:"numeric"
+      }
+    );
+
+  // Location
+
+  navigator.geolocation.getCurrentPosition(
+    async(position)=>{
+
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      try{
+
+        const locationRes =
+          await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
+          );
+
+        const locationData =
+          await locationRes.json();
+
+        const city =
+          locationData.address.city ||
+          locationData.address.town ||
+          locationData.address.village ||
+          "Unknown";
+
+        const state =
+          locationData.address.state ||
+          "";
+
+        document.getElementById(
+          "userLocation"
+        ).innerText =
+          `📍 ${city}, ${state}`;
+
+        // Weather
+
+        const weatherRes =
+          await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m`
+          );
+
+        const weatherData =
+          await weatherRes.json();
+
+        const temp =
+          weatherData.current.temperature_2m;
+
+        document.getElementById(
+          "weatherInfo"
+        ).innerText =
+`       🌤 It's ${temp}°C outside today ✨`
+      }catch(err){
+
+        console.log(err);
+
+      }
+
+    }
+  );
+
+}
+
+loadDateAndWeather();
+
+renderAcademicVault();
+
+
+
+// ---------------- STUDY TRACKER ----------------
+
+const trackerContainer =
+  document.getElementById(
+    "studyTrackerContainer"
+  );
+
+const addSubjectBtn =
+  document.getElementById(
+    "addSubjectBtn"
+  );
+
+const subjectInput =
+  document.getElementById(
+    "subjectInput"
+  );
+
+const resetTrackerBtn =
+  document.getElementById(
+    "resetTrackerBtn"
+  );
+
+// Load saved subjects
+
+let subjects =
+  JSON.parse(
+    localStorage.getItem("subjects")
+  ) || [];
+
+// Save subjects
+
+function saveSubjects() {
+
+  localStorage.setItem(
+    "subjects",
+    JSON.stringify(subjects)
+  );
+
+}
+
+// Render tracker
+
+function renderSubjects() {
+
+  trackerContainer.innerHTML = "";
+
+  subjects.forEach((subject, index) => {
+
+    const card =
+      document.createElement("div");
+
+    card.innerHTML = `
+
+      <div class="flex justify-between mb-2">
+
+        <span class="font-semibold">
+          ${subject.name}
+        </span>
+
+        <span>
+          ${subject.progress}%
+        </span>
+
+      </div>
+
+      <div class="w-full h-4 bg-pink-100 rounded-full overflow-hidden">
+
+        <div
+          class="h-full bg-pink-400 rounded-full"
+          style="width:${subject.progress}%">
+        </div>
+
+      </div>
+
+      <div class="flex gap-2 mt-3">
+
+        <button
+          class="increaseBtn bg-green-200 px-3 py-2 rounded-xl">
+          ➕
+        </button>
+
+        <button
+          class="decreaseBtn bg-yellow-200 px-3 py-2 rounded-xl">
+          ➖
+        </button>
+
+        <button
+          class="deleteSubjectBtn bg-red-200 px-3 py-2 rounded-xl">
+          🗑
+        </button>
+
+      </div>
+    `;
+
+    // Increase
+
+    card.querySelector(".increaseBtn")
+      .addEventListener("click", () => {
+
+        if (subject.progress < 100) {
+
+          subject.progress += 10;
+
+          saveSubjects();
+
+          renderSubjects();
+
+        }
+
+      });
+
+    // Decrease
+
+    card.querySelector(".decreaseBtn")
+      .addEventListener("click", () => {
+
+        if (subject.progress > 0) {
+
+          subject.progress -= 10;
+
+          saveSubjects();
+
+          renderSubjects();
+
+        }
+
+      });
+
+    // Delete
+
+    card.querySelector(".deleteSubjectBtn")
+      .addEventListener("click", () => {
+
+        subjects.splice(index, 1);
+
+        saveSubjects();
+
+        renderSubjects();
+
+      });
+
+    trackerContainer.appendChild(card);
+
+  });
+
+}
+
+// Add subject
+
+addSubjectBtn.addEventListener("click", () => {
+
+  const subjectName =
+    subjectInput.value.trim();
+
+  if (!subjectName) return;
+
+  subjects.push({
+    name: subjectName,
+    progress: 0
+  });
+
+  saveSubjects();
+
+  renderSubjects();
+
+  subjectInput.value = "";
+
+});
+
+// Reset progress
+
+resetTrackerBtn.addEventListener("click", () => {
+
+  subjects.forEach((subject) => {
+
+    subject.progress = 0;
+
+  });
+
+  saveSubjects();
+
+  renderSubjects();
+
+});
+
+// First load
+
+renderSubjects();
+
+// ---------------- MONTHLY PLANNER ----------------
+
+const calendarGrid =
+  document.getElementById("calendarGrid");
+
+const currentMonthText =
+  document.getElementById("currentMonth");
+
+const todayDate =
+  new Date();
+
+const currentMonth =
+  todayDate.getMonth();
+
+const currentYear =
+  todayDate.getFullYear();
+
+const monthNames = [
+
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+
+];
+
+// Show month
+
+currentMonthText.innerText =
+  `${monthNames[currentMonth]} ${currentYear}`;
+
+// Load plans
+
+let plannerData =
+  JSON.parse(
+    localStorage.getItem("plannerData")
+  ) || {};
+
+// Generate calendar
+
+function generateCalendar() {
+
+  calendarGrid.innerHTML = "";
+
+  const daysInMonth =
+    new Date(
+      currentYear,
+      currentMonth + 1,
+      0
+    ).getDate();
+
+  for (let day = 1; day <= daysInMonth; day++) {
+
+    const dayCard =
+      document.createElement("div");
+
+   dayCard.className =
+  "bg-pink-50 rounded-2xl p-3 min-h-[180px] flex flex-col";
+
+    const savedPlan =
+      plannerData[day] || "";
+
+    dayCard.innerHTML = `
+
+      <div class="flex justify-between items-center mb-2">
+
+  <span class="font-bold text-pink-500">
+    ${day}
+  </span>
+
+  <div class="flex flex-col sm:flex-row gap-1">
+
+    <button
+      class="openPlanBtn text-pink-500">
+      👁
+    </button>
+
+    <button
+      class="deletePlanBtn text-red-400">
+      🗑
+    </button>
+
+  </div>
+
+</div>
+
+      <textarea
+  class="plannerInput flex-1 w-full bg-pink-100 rounded-xl p-2 outline-none resize-none text-sm"
+        placeholder="Write plans ✨">${savedPlan}</textarea>
+
+    `;
+
+    // Save plan live
+
+    const textarea =
+      dayCard.querySelector(".plannerInput");
+
+    textarea.addEventListener("input", () => {
+
+      plannerData[day] =
+        textarea.value;
+
+      localStorage.setItem(
+        "plannerData",
+        JSON.stringify(plannerData)
+      );
+
+    });
+
+    // Delete plan
+
+    const openBtn =
+  dayCard.querySelector(".openPlanBtn");
+
+openBtn.addEventListener("click", () => {
+
+  document
+    .getElementById("plannerPopup")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("plannerPopup")
+    .classList.add("flex");
+
+  const popupText =
+    document.getElementById("popupTextarea");
+
+  popupText.value =
+    plannerData[day] || "";
+
+  popupText.oninput = () => {
+
+    plannerData[day] =
+      popupText.value;
+
+    localStorage.setItem(
+      "plannerData",
+      JSON.stringify(plannerData)
+    );
+
+    textarea.value =
+      popupText.value;
+
+  };
+
+});
+
+    const deleteBtn =
+      dayCard.querySelector(".deletePlanBtn");
+
+    deleteBtn.addEventListener("click", () => {
+
+      textarea.value = "";
+
+      delete plannerData[day];
+
+      localStorage.setItem(
+        "plannerData",
+        JSON.stringify(plannerData)
+      );
+
+    });
+
+    calendarGrid.appendChild(dayCard);
+
+  }
+
+}
+
+// First load
+
+generateCalendar();
+
+document
+  .getElementById("closePopup")
+  .addEventListener("click", () => {
+
+    document
+      .getElementById("plannerPopup")
+      .classList.add("hidden");
+
+    document
+      .getElementById("plannerPopup")
+      .classList.remove("flex");
+
+});
+
+// ---------------- VISION BOARD ----------------
+
+const visionUpload =
+  document.getElementById("visionUpload");
+
+const visionBoard =
+  document.getElementById("visionBoard");
+
+let visionItems =
+  JSON.parse(
+    localStorage.getItem("visionItems")
+  ) || [];
+
+function saveVisionBoard() {
+
+  localStorage.setItem(
+    "visionItems",
+    JSON.stringify(visionItems)
+  );
+
+}
+
+function renderVisionBoard() {
+
+  visionBoard.innerHTML = "";
+
+  visionItems.forEach((item, index) => {
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "bg-pink-50 rounded-3xl overflow-hidden shadow-lg";
+
+    card.innerHTML = `
+
+      <img
+        src="${item.image}"
+        class="w-full h-52 object-cover">
+
+      <div class="p-4">
+
+        <p class="font-semibold text-pink-600">
+          ${item.caption}
+        </p>
+
+        <button
+          class="deleteVision mt-3 bg-red-200 px-3 py-2 rounded-xl">
+          🗑 Delete
+        </button>
+
+      </div>
+
+    `;
+
+    card
+      .querySelector(".deleteVision")
+      .addEventListener("click", () => {
+
+        visionItems.splice(index, 1);
+
+        saveVisionBoard();
+
+        renderVisionBoard();
+
+      });
+
+    visionBoard.appendChild(card);
+
+  });
+
+}
+
+visionUpload.addEventListener("change", (e) => {
+
+  const file =
+    e.target.files[0];
+
+  if (!file) return;
+
+  const reader =
+    new FileReader();
+
+  reader.onload = () => {
+
+    const caption =
+      prompt(
+        "Add a dream title ✨"
+      ) || "My Dream 💖";
+
+    visionItems.push({
+
+      image: reader.result,
+
+      caption: caption
+
+    });
+
+    saveVisionBoard();
+
+    renderVisionBoard();
+
+  };
+
+  reader.readAsDataURL(file);
+
+});
+
+// first load
+
+renderVisionBoard();
+
+
+   // ---------------- STICKY NOTE DRAG ----------------
+
+const sticky =
+  document.getElementById("stickyNote");
+
+const stickyHeader =
+  document.getElementById("stickyHeader");
+
+let dragging = false;
+let offsetX = 0;
+let offsetY = 0;
+
+// Desktop
+
+stickyHeader.addEventListener("mousedown", (e) => {
+
+  dragging = true;
+
+  offsetX =
+    e.clientX -
+    sticky.getBoundingClientRect().left;
+
+  offsetY =
+    e.clientY -
+    sticky.getBoundingClientRect().top;
+
+});
+
+document.addEventListener("mousemove", (e) => {
+
+  if (!dragging) return;
+
+  sticky.style.left =
+    `${e.clientX - offsetX}px`;
+
+  sticky.style.top =
+    `${e.clientY - offsetY}px`;
+
+  sticky.style.right = "auto";
+
+});
+
+document.addEventListener("mouseup", () => {
+
+  dragging = false;
+
+});
+
+// iPhone / Android
+
+stickyHeader.addEventListener("touchstart", (e) => {
+
+  dragging = true;
+
+  const touch = e.touches[0];
+
+  offsetX =
+    touch.clientX -
+    sticky.getBoundingClientRect().left;
+
+  offsetY =
+    touch.clientY -
+    sticky.getBoundingClientRect().top;
+
+});
+
+document.addEventListener("touchmove", (e) => {
+
+  if (!dragging) return;
+
+  const touch = e.touches[0];
+
+  sticky.style.left =
+    `${touch.clientX - offsetX}px`;
+
+  sticky.style.top =
+    `${touch.clientY - offsetY}px`;
+
+  sticky.style.right = "auto";
+
+});
+
+document.addEventListener("touchend", () => {
+
+  dragging = false;
+
+});
+
+// ---------------- STICKY MINIMIZE ----------------
+
+const minimizeBtn =
+  document.getElementById(
+    "minimizeStickyBtn"
+  );
+
+const stickyContent =
+  document.getElementById(
+    "stickyContent"
+  );
+
+let minimized = false;
+
+minimizeBtn.addEventListener("click", () => {
+
+  minimized = !minimized;
+
+  if(minimized){
+
+    stickyContent.style.display = "none";
+
+    document.querySelector("#stickyHeader h3")
+      .style.display = "none";
+
+    sticky.style.width = "70px";
+    sticky.style.height = "70px";
+    sticky.style.borderRadius = "50%";
+
+    minimizeBtn.innerText = "📒";
+
+  }else{
+
+    stickyContent.style.display = "block";
+
+    document.querySelector("#stickyHeader h3")
+      .style.display = "block";
+
+    sticky.style.width = "256px";
+    sticky.style.height = "auto";
+    sticky.style.borderRadius = "24px";
+
+    minimizeBtn.innerText = "➖";
+
+  }
+
+});
+
+</script>
+
+<script>
+
+// ---------------- POMODORO TIMER ----------------
+
+const timerDisplay =
+  document.getElementById("timerDisplay");
+
+const progressCircle =
+  document.getElementById("progressCircle");
+
+const startBtn =
+  document.getElementById("startBtn");
+
+const pauseBtn =
+  document.getElementById("pauseBtn");
+
+const resetBtn =
+  document.getElementById("resetBtn");
+
+const focusElement =
+  document.getElementById("focusQueen");
+
+const FULL_DASH = 691;
+
+// ---------------- DAILY RESET ----------------
+
+const focusToday =
+  new Date().toDateString();
+
+const savedFocusDate =
+  localStorage.getItem("focusDate");
+
+if (savedFocusDate !== focusToday) {
+
+  localStorage.setItem(
+    "focusDate",
+    focusToday
+  );
+
+  localStorage.setItem(
+    "focusSeconds",
+    0
+  );
+
+}
+
+// ---------------- TIMER ----------------
+
+let totalTime = 25 * 60;
+
+let timeLeft =
+  parseInt(localStorage.getItem("timeLeft"))
+  || totalTime;
+
+let timer = null;
+
+// ---------------- FOCUS TIME ----------------
+
+let focusSeconds =
+  parseInt(
+    localStorage.getItem("focusSeconds")
+  ) || 0;
+
+// ---------------- UPDATE FOCUS UI ----------------
+
+function updateFocusQueen() {
+
+  const hours =
+    Math.floor(focusSeconds / 3600);
+
+  const minutes =
+    Math.floor((focusSeconds % 3600) / 60);
+
+  const seconds =
+    focusSeconds % 60;
+
+  if (hours > 0) {
+
+    focusElement.innerText =
+      `${hours}h ${minutes}m ${seconds}s`;
+
+  } else if (minutes > 0) {
+
+    focusElement.innerText =
+      `${minutes}m ${seconds}s`;
+
+  } else {
+
+    focusElement.innerText =
+      `${seconds}s`;
+
+  }
+
+}
+
+// ---------------- UPDATE TIMER ----------------
+
+function updateTimer() {
+
+  const minutes =
+    Math.floor(timeLeft / 60)
+      .toString()
+      .padStart(2, "0");
+
+  const seconds =
+    (timeLeft % 60)
+      .toString()
+      .padStart(2, "0");
+
+  timerDisplay.innerText =
+    `${minutes}:${seconds}`;
+
+  const progress =
+    timeLeft / totalTime;
+
+  progressCircle.style.strokeDashoffset =
+    FULL_DASH * (1 - progress);
+
+  // Save timer
+
+  localStorage.setItem(
+    "timeLeft",
+    timeLeft
+  );
+
+}
+
+// ---------------- START ----------------
+
+startBtn.addEventListener("click", () => {
+
+  if (timer) return;
+
+  timer = setInterval(() => {
+
+    if (timeLeft > 0) {
+
+      timeLeft--;
+
+      focusSeconds++;
+
+      localStorage.setItem(
+        "focusSeconds",
+        focusSeconds
+      );
+
+      updateFocusQueen();
+
+      updateTimer();
+
+    } else {
+
+      clearInterval(timer);
+
+      timer = null;
+
+      alert("Pomodoro finished 💖");
+
+    }
+
+  }, 1000);
+
+});
+
+// ---------------- PAUSE ----------------
+
+pauseBtn.addEventListener("click", () => {
+
+  clearInterval(timer);
+
+  timer = null;
+
+});
+
+// ---------------- RESET ----------------
+
+resetBtn.addEventListener("click", () => {
+
+  clearInterval(timer);
+
+  timer = null;
+
+  timeLeft = totalTime;
+
+  updateTimer();
+
+});
+
+
+
+// ---------------- FIRST LOAD ----------------
+
+updateTimer();
+
+updateFocusQueen();
+
+document.querySelectorAll(".navBtn")
+.forEach(btn => {
+
+  btn.addEventListener("click", () => {
+
+    const section =
+      document.getElementById(
+        btn.dataset.target
+      );
+
+    if(section){
+
+  section.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
+  section.classList.add("sectionGlow");
+
+  setTimeout(() => {
+
+    section.classList.remove(
+      "sectionGlow"
+    );
+
+  },1200);
+
+}
+
+  });
+
+});
+
+const menuToggleBtn =
+  document.getElementById("menuToggleBtn");
+
+const navMenu =
+  document.getElementById("navMenu");
+
+menuToggleBtn.addEventListener("click", () => {
+
+  navMenu.classList.toggle("hidden");
+
+});
+
+const plannerToggle =
+  document.getElementById("plannerToggle");
+
+const plannerSection =
+  document.getElementById("plannerSection");
+
+plannerToggle.addEventListener("click", () => {
+
+  plannerSection.classList.toggle("open");
+
+  plannerToggle.textContent =
+    plannerSection.classList.contains("open")
+      ? "📅 Hide Planner"
+      : "📅 Show Planner";
+
+});
+
+document
+.getElementById("studyShopBtn")
+.addEventListener("click", () => {
+  window.location.href = "shop.html";
+});
+
+</script>
+</body>
+</html>
