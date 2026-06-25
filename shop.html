@@ -8,8 +8,6 @@
 <title>🌷 Study Shop</title>
 
 <style>
-
-
 *{
 margin:0;
 padding:0;
@@ -17,37 +15,30 @@ box-sizing:border-box;
 font-family:'Quicksand',sans-serif;
 }
 
-body {
-  margin: 0;
-  padding: 35px; /* ← adds space around entire website */
-
-  min-height: 100vh;
-
-  background-color: #ffd6e7;
-  background-image: radial-gradient(
-    rgba(255,255,255,0.6) 6px,
-    transparent 6px
-  );
-
-  background-size: 50px 50px;
+body{
+margin:0;
+padding:35px;
+min-height:100vh;
+background-color:#ffd6e7;
+background-image:radial-gradient(
+rgba(255,255,255,0.6) 6px,
+transparent 6px
+);
+background-size:50px 50px;
 }
 
 .shopContainer{
 max-width:1600px;
 margin:auto;
-
 background-color:#fff8fc;
 background-image:
 radial-gradient(
 rgba(255,192,203,0.35) 7px,
 transparent 3px
 );
-
 background-size:35px 35px;
-
 border-radius:35px;
 padding:40px;
-
 box-shadow:0 10px 35px rgba(0,0,0,.08);
 }
 
@@ -103,7 +94,7 @@ gap:35px;
 }
 
 .categoryCard{
-background: #ffd6e7;
+background:#ffd6e7;
 border-radius:30px;
 padding:18px;
 display:flex;
@@ -140,19 +131,6 @@ line-height:1.6;
 color:#6f5a68;
 }
 
-.backBtn,
-.shopBtn{
-font-size:0.95rem;
-font-weight:700;
-letter-spacing:0.3px;
-}
-
-.headerText h1,
-.categoryInfo h3,
-.thankBox h2{
-letter-spacing:1px;
-}
-
 .arrowBtn{
 width:60px;
 height:60px;
@@ -162,99 +140,6 @@ background:#ff6aa8;
 color:white;
 font-size:2rem;
 cursor:pointer;
-}
-
-
-/* SECTION TITLE */
-
-.sectionTitle{
-font-size:2.3rem;
-color:#ea5a98;
-margin:50px 0 30px;
-}
-
-/* PRODUCTS */
-
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.productCard{
-background:white;
-border-radius:22px;
-overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,.07);
-transition:.3s;
-}
-
-.productCard:hover{
-transform:translateY(-5px);
-}
-
-.productImg{
-height:260px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:7rem;
-background:#fff4f8;
-}
-
-.productInfo{
-padding:20px;
-}
-
-.productInfo h3{
-font-size:1.6rem;
-margin-bottom:10px;
-}
-
-.productInfo p{
-margin-bottom:15px;
-line-height:1.7;
-}
-
-
-.shopBtn{
-width:100%;
-padding:14px;
-border:none;
-border-radius:15px;
-background:linear-gradient(90deg,#ff6aa8,#ff82bb);
-color:white;
-font-size:1.1rem;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* THANK YOU */
-
-.thankBox{
-margin-top:60px;
-padding:40px;
-border:2px dashed #ffd1e3;
-border-radius:35px;
-background:#fff9fb;
-text-align:center;
-}
-
-.thankBox h2{
-font-size:2.2rem;
-color:#5a285c;
-margin-bottom:15px;
-}
-
-.thankBox p{
-font-size:1.2rem;
-}
-
-.footerNote{
-margin-top:25px;
-text-align:center;
-color:#d36c99;
-font-size:1rem;
 }
 
 .dropdownMenu{
@@ -276,6 +161,9 @@ border-radius:18px;
 padding:15px;
 text-align:center;
 box-shadow:0 4px 12px rgba(0,0,0,.08);
+display:flex;
+flex-direction:column;
+justify-content:space-between;
 }
 
 .dropdownProduct img{
@@ -284,6 +172,7 @@ height:140px;
 object-fit:cover;
 border-radius:12px;
 margin-bottom:10px;
+background:#fff4f8;
 }
 
 .productName{
@@ -291,6 +180,11 @@ font-size:.95rem;
 font-weight:600;
 margin-bottom:10px;
 color:#5b1b5f;
+min-height:42px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
 }
 
 .viewBtn{
@@ -304,21 +198,49 @@ font-weight:600;
 cursor:pointer;
 }
 
-.shopBtnSmall{
-background:#ff6aa8;
-color:white;
-border:none;
-padding:8px 14px;
-border-radius:12px;
-cursor:pointer;
-font-size:.85rem;
+.viewBtn:hover{
+opacity:.95;
+}
+
+/* THANK YOU SECTION */
+
+.thankBox{
+margin-top:60px;
+padding:45px 35px;
+border-radius:32px;
+background:linear-gradient(135deg,#fff9fc,#fff3f8);
+border:1.5px solid #ffd6e7;
+text-align:center;
+box-shadow:0 10px 30px rgba(226,87,147,0.08);
+}
+
+.thankBox h2{
+font-size:2rem;
+color:#5a285c;
+margin-bottom:16px;
+font-weight:700;
+letter-spacing:.3px;
+}
+
+.thankBox p{
+font-size:1.08rem;
+line-height:1.9;
+color:#6b5161;
+max-width:900px;
+margin:0 auto;
+}
+
+.footerNote{
+margin-top:18px;
+text-align:center;
+color:#d36c99;
+font-size:1rem;
 font-weight:600;
 }
 
 /* MOBILE */
 
 @media(max-width:900px){
-
 body{
 padding:15px;
 }
@@ -348,11 +270,7 @@ padding:20px 0;
 .heroImg{
 font-size:7rem;
 }
-
 }
-
-
-
 </style>
 </head>
 
@@ -360,273 +278,216 @@ font-size:7rem;
 
 <div class="shopContainer">
 
-<!-- HEADER -->
+  <!-- HEADER -->
+  <div class="shopHeader">
+    <div class="headerText">
+      <h1>🌷Study Shop</h1>
 
-<div class="shopHeader">
+      <p>
+        Handpicked study essentials for productive days ✨
+      </p>
 
-<div class="headerText">
-<h1>🌷Study Shop</h1>
+      <button class="backBtn" onclick="window.location.href='index.html'">
+        🏠 Back to Dashboard
+      </button>
+    </div>
 
+    <div class="heroImg">
+      💡🌸🧸
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="categories">
+
+    <!-- NOTEBOOKS -->
+    <div class="categoryCard">
+      <div class="categoryIcon">📔</div>
+
+      <div class="categoryInfo">
+        <h3>📚 Notebooks & Journals</h3>
+        <p>
+          Beautiful notebooks and journals to write your
+          thoughts, notes and dreams.
+        </p>
+
+        <div class="dropdownMenu" id="notebooks">
+          <div class="productsGrid" id="notebookProducts"></div>
+        </div>
+      </div>
+
+      <button class="arrowBtn" onclick="toggleDropdown('notebooks')">›</button>
+    </div>
+
+    <!-- STATIONERY -->
+    <div class="categoryCard">
+      <div class="categoryIcon">🖍️</div>
+
+      <div class="categoryInfo">
+        <h3>✨ Stationery</h3>
+        <p>
+          Cute pens, highlighters, sticky notes and everything
+          to make studying fun.
+        </p>
+
+        <div class="dropdownMenu" id="stationery">
+          <div class="productsGrid" id="stationeryProducts"></div>
+        </div>
+      </div>
+
+      <button class="arrowBtn" onclick="toggleDropdown('stationery')">›</button>
+    </div>
+
+    <!-- DESK SETUP -->
+    <div class="categoryCard">
+      <div class="categoryIcon">💡</div>
+
+      <div class="categoryInfo">
+        <h3>💡 Desk Setup</h3>
+        <p>
+          Everything you need for a cozy aesthetic and
+          productive study space.
+        </p>
+
+        <div class="dropdownMenu" id="desksetup">
+          <div class="productsGrid" id="deskProducts"></div>
+        </div>
+      </div>
+
+      <button class="arrowBtn" onclick="toggleDropdown('desksetup')">›</button>
+    </div>
+
+    <!-- ACCESSORIES -->
+    <div class="categoryCard">
+      <div class="categoryIcon">🧸</div>
+
+      <div class="categoryInfo">
+        <h3>🧸 Cute Accessories</h3>
+        <p>
+          Adorable accessories to add charm and comfort
+          to your study routine.
+        </p>
+
+        <div class="dropdownMenu" id="accessories">
+          <div class="productsGrid" id="accessoryProducts"></div>
+        </div>
+      </div>
+
+      <button class="arrowBtn" onclick="toggleDropdown('accessories')">›</button>
+    </div>
+
+  </div>
+
+  <!-- THANK YOU SECTION -->
+  <div class="thankBox">
+    <h2>Thank you for supporting PinkFlow 🌷</h2>
 <p>
-Handpicked study essentials for productive days ✨
+  Thank you for being here with PinkFlow 💖 Every order, click, and little bit of support means more than you know.
 </p>
 
-<button class="backBtn" onclick="window.location.href='index.html'">
-🏠 Back to Dashboard
-</button>
-</div>
-
-<div class="heroImg">
-💡🌸🧸
-</div>
-
-</div>
-
-<!-- CATEGORIES -->
-
-<div class="categories">
-
-  <!-- NOTEBOOKS -->
-
-  <div class="categoryCard">
-
-    <div class="categoryIcon">📔</div>
-
-    <div class="categoryInfo">
-
-      <h3>📚 Notebooks & Journals</h3>
-
-      <p>
-        Beautiful notebooks and journals to write your
-        thoughts, notes and dreams.
-      </p>
-
-      <div class="dropdownMenu" id="notebooks">
-        <div class="productsGrid" id="notebookProducts"></div>
-      </div>
-
+    <div class="footerNote">
+      With love, PinkFlow ✨
     </div>
-
-    <button
-      class="arrowBtn"
-      onclick="toggleDropdown('notebooks')">
-      ›
-    </button>
-
-  </div>
-
-  <!-- STATIONERY -->
-
-  <div class="categoryCard">
-
-    <div class="categoryIcon">🖍️</div>
-
-    <div class="categoryInfo">
-
-      <h3>✨ Stationery</h3>
-
-      <p>
-        Cute pens, highlighters, sticky notes and everything
-        to make studying fun.
-      </p>
-
-      <div class="dropdownMenu" id="stationery">
-        <div class="productsGrid" id="stationeryProducts"></div>
-      </div>
-
-    </div>
-
-    <button
-      class="arrowBtn"
-      onclick="toggleDropdown('stationery')">
-      ›
-    </button>
-
-  </div>
-
-  <!-- DESK SETUP -->
-
-  <div class="categoryCard">
-
-    <div class="categoryIcon">💡</div>
-
-    <div class="categoryInfo">
-
-      <h3>💡 Desk Setup</h3>
-
-      <p>
-        Everything you need for a cozy aesthetic and
-        productive study space.
-      </p>
-
-      <div class="dropdownMenu" id="desksetup">
-        <div class="productsGrid" id="deskProducts"></div>
-      </div>
-
-    </div>
-
-    <button
-      class="arrowBtn"
-      onclick="toggleDropdown('desksetup')">
-      ›
-    </button>
-
-  </div>
-
-  <!-- ACCESSORIES -->
-
-  <div class="categoryCard">
-
-    <div class="categoryIcon">🧸</div>
-
-    <div class="categoryInfo">
-
-      <h3>🧸 Cute Accessories</h3>
-
-      <p>
-        Adorable accessories to add charm and comfort
-        to your study routine.
-      </p>
-
-      <div class="dropdownMenu" id="accessories">
-        <div class="productsGrid" id="accessoryProducts"></div>
-      </div>
-
-    </div>
-
-    <button
-      class="arrowBtn"
-      onclick="toggleDropdown('accessories')">
-      ›
-    </button>
-
   </div>
 
 </div>
 
 <script>
-
 function toggleDropdown(id){
+  const menu = document.getElementById(id);
 
-const menu =
-document.getElementById(id);
-
-if(menu.style.display==="block"){
-
-menu.style.display="none";
-
-}else{
-
-menu.style.display="block";
-
+  if(menu.style.display === "block"){
+    menu.style.display = "none";
+  }else{
+    menu.style.display = "block";
+  }
 }
-
-}
-
 </script>
 
 <script type="module">
-
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
 import {
-getFirestore,
-collection,
-getDocs,
-doc,
-updateDoc,
-increment
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+  increment
 }
 from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 const firebaseConfig = {
 apiKey: "AIzaSyDQk--C2NI0CYvfoMaz-WvpUwxi2PJOEJM",
-authDomain: "pinkflow-f0790.firebaseapp.com",
-projectId: "pinkflow-f0790",
-storageBucket: "pinkflow-f0790.firebasestorage.app",
-messagingSenderId: "355559231039",
-appId: "1:355559231039:web:c4b450e8cd24637953b28a"
+  authDomain: "pinkflow-f0790.firebaseapp.com",
+  projectId: "pinkflow-f0790",
+  storageBucket: "pinkflow-f0790.appspot.com",
+  messagingSenderId: "355559231039",
+  appId: "1:355559231039:web:c4b450e8cd24637953b28a"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const snapshot =
-await getDocs(collection(db,"products"));
+async function loadProducts(){
+  try{
+    const snapshot = await getDocs(collection(db,"products"));
 
-snapshot.forEach((doc)=>{
+    document.getElementById("notebookProducts").innerHTML = "";
+    document.getElementById("stationeryProducts").innerHTML = "";
+    document.getElementById("deskProducts").innerHTML = "";
+    document.getElementById("accessoryProducts").innerHTML = "";
 
-const p = doc.data();
+    snapshot.forEach((productDoc)=>{
+      const p = productDoc.data();
 
-const productHTML = `
-<div class="dropdownProduct">
+      const productHTML = `
+        <div class="dropdownProduct">
+          <img src="${p.image}" alt="${p.name}">
+          <div class="productName">${p.name}</div>
 
-<img src="${p.image}">
+          <a
+            href="${p.affiliateLink}"
+            target="_blank"
+            onclick="trackClick('${productDoc.id}')">
+            <button class="viewBtn">View Product</button>
+          </a>
+        </div>
+      `;
 
-<div class="productName">
-${p.name}
-</div>
+      if(p.category === "stationery"){
+        document.getElementById("stationeryProducts").innerHTML += productHTML;
+      }
 
-<a
-href="${p.affiliateLink}"
-target="_blank"
-onclick="trackClick('${doc.id}')">
+      if(p.category === "notebooks"){
+        document.getElementById("notebookProducts").innerHTML += productHTML;
+      }
 
-<button class="viewBtn">
-View Product
-</button>
+      if(p.category === "desksetup"){
+        document.getElementById("deskProducts").innerHTML += productHTML;
+      }
 
-</a>
-
-</div>
-`;
-
-if(p.category==="stationery"){
-document
-.getElementById("stationeryProducts")
-.innerHTML += productHTML;
+      if(p.category === "accessories"){
+        document.getElementById("accessoryProducts").innerHTML += productHTML;
+      }
+    });
+  }catch(error){
+    console.error("Error loading products:", error);
+  }
 }
-
-if(p.category==="notebooks"){
-document
-.getElementById("notebookProducts")
-.innerHTML += productHTML;
-}
-
-if(p.category==="desksetup"){
-document
-.getElementById("deskProducts")
-.innerHTML += productHTML;
-}
-
-if(p.category==="accessories"){
-document
-.getElementById("accessoryProducts")
-.innerHTML += productHTML;
-}
-
-});
 
 window.trackClick = async function(productId){
+  try{
+    await updateDoc(doc(db,"products",productId), {
+      clicks: increment(1)
+    });
+  }catch(error){
+    console.log(error);
+  }
+};
 
-try{
-
-await updateDoc(
-doc(db,"products",productId),
-{
-clicks: increment(1)
-}
-);
-
-}catch(error){
-
-console.log(error);
-
-}
-
-}
-
+loadProducts();
 </script>
 
 </body>

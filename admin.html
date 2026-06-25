@@ -7,7 +7,6 @@
 <title>🌷 PinkFlow Admin</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -33,6 +32,11 @@ h1{
 color:#e25793;
 margin-bottom:25px;
 text-align:center;
+}
+
+h2{
+color:#5b1b5f;
+margin-bottom:10px;
 }
 
 label{
@@ -65,6 +69,10 @@ font-weight:bold;
 cursor:pointer;
 }
 
+button:hover{
+opacity:.95;
+}
+
 #status{
 margin-top:15px;
 font-weight:bold;
@@ -77,329 +85,27 @@ max-width:500px;
 margin:auto;
 }
 
-</style>
-</head>
-
-<body>
-
-    <div id="loginScreen">
-
-<div class="adminCard">
-
-<h1>🌷 PinkFlow Admin Login</h1>
-
-<input
-type="email"
-id="adminEmail"
-placeholder="Email">
-
-<br><br>
-
-<input
-type="password"
-id="adminPassword"
-placeholder="Password">
-
-<button onclick="loginAdmin()">
-Login
-</button>
-
-</div>
-
-</div>
-
-<div id="adminPanel" style="display:none;">
-
-<div class="adminCard">
-
-<h1>🌷 PinkFlow Admin</h1>
-
-<button onclick="logoutAdmin()">
-🚪 Logout
-</button>
-
-<br><br>
-
-<h2>📈 Analytics</h2>
-<div id="analyticsBox">
-
-Loading analytics...
-
-</div>
-
-
-<label>Product Name</label>
-<input
-type="text"
-id="name"
-placeholder="Cute Gel Pen">
-
-<label>Category</label>
-
-<select id="category">
-<option value="notebooks">📚 Notebooks</option>
-<option value="stationery">✨ Stationery</option>
-<option value="desksetup">💡 Desk Setup</option>
-<option value="accessories">🧸 Accessories</option>
-</select>
-
-<label>Image Path</label>
-
-<input
-type="text"
-id="image"
-placeholder="images/gelpen.jpg">
-
-<label>Affiliate Link</label>
-
-<input
-type="text"
-id="affiliate"
-placeholder="https://amazon.in/...">
-
-<button id="saveBtn">
-💾 Save Product
-</button>
-
-<p id="status"></p>
-
-<hr style="margin:30px 0;">
-
-<h2>📦 Existing Products</h2>
-
-<div id="productList">
-Loading...
-</div>
-
-</div>
-
-
-</div>
-
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-
-import {
-getAuth,
-signInWithEmailAndPassword,
-onAuthStateChanged,
-signOut
-}
-from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-
-import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-deleteDoc,
-doc,
-updateDoc
-}
-from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
-const firebaseConfig = {
-apiKey: "AIzaSyDQk--C2NI0CYvfoMaz-WvpUwxi2PJOEJM",
-authDomain: "pinkflow-f0790.firebaseapp.com",
-projectId: "pinkflow-f0790",
-storageBucket: "pinkflow-f0790.firebasestorage.app",
-messagingSenderId: "355559231039",
-appId: "1:355559231039:web:c4b450e8cd24637953b28a"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-let editingProductId = null;
-
-/* LOGIN */
-
-async function loginAdmin(){
-
-const email =
-document.getElementById("adminEmail").value;
-
-const password =
-document.getElementById("adminPassword").value;
-
-try{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-}catch(error){
-
-alert(error.message);
-
+.previewBox{
+margin-top:15px;
+display:none;
 }
 
+.previewBox img{
+width:120px;
+height:120px;
+object-fit:cover;
+border-radius:16px;
+border:2px solid #ffd6e7;
+background:#fff4f8;
 }
 
-window.loginAdmin = loginAdmin;
-
-/* LOGOUT */
-
-async function logoutAdmin(){
-
-await signOut(auth);
-
+.smallText{
+font-size:.9rem;
+color:#7a5a6b;
+margin-top:6px;
 }
 
-window.logoutAdmin = logoutAdmin;
-
-/* AUTH CHECK */
-
-onAuthStateChanged(auth,(user)=>{
-
-if(!user){
-
-document.getElementById("loginScreen").style.display =
-"block";
-
-document.getElementById("adminPanel").style.display =
-"none";
-
-return;
-
-}
-
-if(
-user.email !==
-"shrishtiburagohain123@gmail.com"
-){
-
-alert("Access Denied");
-
-window.location.href =
-"index.html";
-
-return;
-
-}
-
-document.getElementById("loginScreen").style.display =
-"none";
-
-document.getElementById("adminPanel").style.display =
-"block";
-
-loadProducts();
-
-});
-
-/* SAVE PRODUCT */
-
-document
-.getElementById("saveBtn")
-.addEventListener("click", async()=>{
-
-const name =
-document.getElementById("name").value;
-
-const category =
-document.getElementById("category").value;
-
-const image =
-document.getElementById("image").value;
-
-const affiliateLink =
-document.getElementById("affiliate").value;
-
-if(
-!name ||
-!category ||
-!image ||
-!affiliateLink
-){
-alert("Fill all fields");
-return;
-}
-
-if(editingProductId){
-
-await updateDoc(
-doc(db,"products",editingProductId),
-{
-name,
-category,
-image,
-affiliateLink
-}
-);
-
-editingProductId = null;
-
-document.getElementById("saveBtn").innerText =
-"💾 Save Product";
-
-}else{
-
-await addDoc(
-collection(db,"products"),
-{
-name,
-category,
-image,
-affiliateLink,
-clicks:0,
-createdAt:Date.now()
-}
-);
-
-}
-
-document.getElementById("status").innerText =
-"✅ Product Saved";
-
-document.getElementById("name").value = "";
-document.getElementById("image").value = "";
-document.getElementById("affiliate").value = "";
-
-loadProducts();
-
-});
-
-/* LOAD PRODUCTS */
-
-async function loadProducts(){
-
-const list =
-document.getElementById("productList");
-
-list.innerHTML = "";
-
-const snapshot =
-await getDocs(
-collection(db,"products")
-);
-
-let totalClicks = 0;
-let topProduct = "";
-let topClicks = 0;
-
-snapshot.forEach((product)=>{
-
-const p = product.data();
-
-const clicks = p.clicks || 0;
-
-totalClicks += clicks;
-
-if(clicks > topClicks){
-
-topClicks = clicks;
-topProduct = p.name;
-
-}
-
-list.innerHTML += `
-<div style="
+.productRow{
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -407,119 +113,527 @@ padding:12px;
 margin-top:10px;
 background:#fff4f8;
 border-radius:12px;
-">
+gap:12px;
+flex-wrap:wrap;
+}
 
-<span>${p.name}</span>
+.productLeft{
+display:flex;
+align-items:center;
+gap:12px;
+min-width:0;
+flex:1;
+}
 
-<div>
+.productLeft img{
+width:60px;
+height:60px;
+object-fit:cover;
+border-radius:10px;
+background:#fff;
+flex-shrink:0;
+}
 
-<button
-onclick="editProduct('${product.id}')"
-style="
+.productName{
+font-weight:600;
+color:#5b1b5f;
+word-break:break-word;
+}
+
+.productActions{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.actionBtn{
 width:auto;
-margin-right:8px;
 padding:8px 14px;
+margin-top:0;
+font-size:.95rem;
+}
+
+.editBtn{
 background:#ffb347;
-">
-✏️ Edit
-</button>
+color:white;
+}
 
-<button
-onclick="deleteProduct('${product.id}')"
-style="
-width:auto;
-padding:8px 14px;
+.deleteBtn{
 background:#ff5d7a;
-">
-🗑 Delete
-</button>
+color:white;
+}
 
-</div>
+.logoutBtn{
+background:#ffa3c7;
+margin-top:0;
+}
 
-</div>
-`;
+hr{
+margin:30px 0;
+border:none;
+border-top:2px dashed #ffd6e7;
+}
 
-});
-
-document.getElementById(
-"analyticsBox"
-).innerHTML = `
-
-<div style="
-background:#fff4f8;
+@media(max-width:700px){
+body{
 padding:20px;
-border-radius:15px;
-">
+}
 
-<p>📊 Total Clicks: <b>${totalClicks}</b></p>
+.adminCard{
+padding:22px;
+}
 
-<p>🏆 Top Product:
-<b>${topProduct || "None Yet"}</b></p>
+.productRow{
+align-items:flex-start;
+}
 
-<p>🔥 Top Clicks:
-<b>${topClicks}</b></p>
+.productActions{
+width:100%;
+}
+}
 
+.topActions{
+display:flex;
+gap:12px;
+margin-top:10px;
+margin-bottom:10px;
+flex-wrap:wrap;
+}
+
+.topActions button{
+flex:1;
+margin-top:0;
+}
+
+.storeBtn{
+background:#ff8fbd;
+color:white;
+}
+
+.logoutBtn{
+background:#ffa3c7;
+margin-top:0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="loginScreen">
+  <div class="adminCard">
+    <h1>🌷 PinkFlow Admin Login</h1>
+
+    <input
+      type="email"
+      id="adminEmail"
+      placeholder="Email">
+
+    <br><br>
+
+    <input
+      type="password"
+      id="adminPassword"
+      placeholder="Password">
+
+    <button onclick="loginAdmin()">
+      Login
+    </button>
+  </div>
 </div>
 
-`;
+<div id="adminPanel" style="display:none;">
+  <div class="adminCard">
 
+    <h1>🌷 PinkFlow Admin</h1>
+
+<div class="topActions">
+  <button class="storeBtn" onclick="window.location.href='shop.html'">
+    🛍 View Store
+  </button>
+
+  <button class="logoutBtn" onclick="logoutAdmin()">
+    🚪 Logout
+  </button>
+</div>
+
+<br><br>
+
+    <h2>📈 Analytics</h2>
+    <div id="analyticsBox">
+      Loading analytics...
+    </div>
+
+    <label>Product Name</label>
+    <input
+      type="text"
+      id="name"
+      placeholder="Cute Gel Pen">
+
+    <label>Category</label>
+    <select id="category">
+      <option value="notebooks">📚 Notebooks</option>
+      <option value="stationery">✨ Stationery</option>
+      <option value="desksetup">💡 Desk Setup</option>
+      <option value="accessories">🧸 Accessories</option>
+    </select>
+
+    <label>Upload Product Image</label>
+    <input type="file" id="imageFile" accept=".jpg,.jpeg,.png,image/jpeg,image/png">
+
+    <div class="smallText">
+      Allowed: JPG, JPEG, PNG
+    </div>
+
+    <div class="previewBox" id="previewBox">
+      <img id="imagePreview" alt="Preview">
+    </div>
+
+    <label>Affiliate Link</label>
+    <input
+      type="text"
+      id="affiliate"
+      placeholder="https://amazon.in/...">
+
+    <button id="saveBtn">
+      💾 Save Product
+    </button>
+
+    <p id="status"></p>
+
+    <hr>
+
+    <h2>📦 Existing Products</h2>
+    <div id="productList">Loading...</div>
+
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
 }
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-/* DELETE */
-
-window.deleteProduct =
-async function(id){
-
-if(!confirm("Delete product?"))
-return;
-
-await deleteDoc(
-doc(db,"products",id)
-);
-
-loadProducts();
-
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc,
+  getDoc
 }
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-/* EDIT */
+const firebaseConfig = {
+apiKey: "AIzaSyDQk--C2NI0CYvfoMaz-WvpUwxi2PJOEJM",
+  authDomain: "pinkflow-f0790.firebaseapp.com",
+  projectId: "pinkflow-f0790",
+  storageBucket: "pinkflow-f0790.appspot.com",
+  messagingSenderId: "355559231039",
+  appId: "1:355559231039:web:c4b450e8cd24637953b28a"
+};
 
-window.editProduct =
-async function(id){
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-const snapshot =
-await getDocs(
-collection(db,"products")
-);
+let editingProductId = null;
+let existingImageData = "";
 
-snapshot.forEach((product)=>{
+/* ---------- LOGIN ---------- */
+async function loginAdmin(){
+  const email = document.getElementById("adminEmail").value.trim();
+  const password = document.getElementById("adminPassword").value;
 
-if(product.id===id){
-
-const p = product.data();
-
-document.getElementById("name").value =
-p.name;
-
-document.getElementById("category").value =
-p.category;
-
-document.getElementById("image").value =
-p.image;
-
-document.getElementById("affiliate").value =
-p.affiliateLink;
-
-editingProductId = id;
-
-document.getElementById("saveBtn").innerText =
-"💾 Update Product";
-
+  try{
+    await signInWithEmailAndPassword(auth, email, password);
+  }catch(error){
+    alert(error.message);
+  }
 }
+window.loginAdmin = loginAdmin;
 
+/* ---------- LOGOUT ---------- */
+async function logoutAdmin(){
+  await signOut(auth);
+}
+window.logoutAdmin = logoutAdmin;
+
+/* ---------- AUTH CHECK ---------- */
+onAuthStateChanged(auth, async(user)=>{
+
+  if(!user){
+    document.getElementById("loginScreen").style.display = "block";
+    document.getElementById("adminPanel").style.display = "none";
+    return;
+  }
+
+  if(user.email !== "shrishtiburagohain123@gmail.com"){
+    alert("Access Denied");
+    window.location.href = "index.html";
+    return;
+  }
+
+  document.getElementById("loginScreen").style.display = "none";
+  document.getElementById("adminPanel").style.display = "block";
+
+  await loadProducts();
 });
 
+/* ---------- IMAGE PREVIEW ---------- */
+document.getElementById("imageFile").addEventListener("change", async(e)=>{
+  const file = e.target.files[0];
+  if(!file){
+    hidePreview();
+    return;
+  }
+
+  const validTypes = ["image/jpeg", "image/png"];
+  if(!validTypes.includes(file.type)){
+    alert("Please upload only JPG, JPEG, or PNG images.");
+    e.target.value = "";
+    hidePreview();
+    return;
+  }
+
+  const base64 = await fileToBase64(file);
+  showPreview(base64);
+});
+
+function showPreview(src){
+  const previewBox = document.getElementById("previewBox");
+  const previewImg = document.getElementById("imagePreview");
+  previewImg.src = src;
+  previewBox.style.display = "block";
 }
 
+function hidePreview(){
+  const previewBox = document.getElementById("previewBox");
+  const previewImg = document.getElementById("imagePreview");
+  previewImg.src = "";
+  previewBox.style.display = "none";
+}
+
+/* ---------- FILE TO BASE64 ---------- */
+function fileToBase64(file){
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+/* ---------- CLEAR FORM ---------- */
+function clearForm(){
+  document.getElementById("name").value = "";
+  document.getElementById("category").value = "notebooks";
+  document.getElementById("affiliate").value = "";
+  document.getElementById("imageFile").value = "";
+  document.getElementById("saveBtn").innerText = "💾 Save Product";
+  document.getElementById("status").innerText = "";
+  hidePreview();
+  editingProductId = null;
+  existingImageData = "";
+}
+
+/* ---------- SAVE PRODUCT ---------- */
+document.getElementById("saveBtn").addEventListener("click", async()=>{
+
+  const saveBtn = document.getElementById("saveBtn");
+  const status = document.getElementById("status");
+
+  const name = document.getElementById("name").value.trim();
+  const category = document.getElementById("category").value;
+  const affiliateLink = document.getElementById("affiliate").value.trim();
+  const imageFile = document.getElementById("imageFile").files[0];
+
+  if(!name || !category || !affiliateLink){
+    alert("Fill all fields");
+    return;
+  }
+
+  let image = existingImageData;
+
+  try{
+    saveBtn.disabled = true;
+    saveBtn.innerText = "Saving...";
+    status.innerText = "";
+
+    if(imageFile){
+      const validTypes = ["image/jpeg", "image/png"];
+      if(!validTypes.includes(imageFile.type)){
+        alert("Please upload only JPG, JPEG, or PNG images.");
+        saveBtn.disabled = false;
+        saveBtn.innerText = editingProductId ? "💾 Update Product" : "💾 Save Product";
+        return;
+      }
+
+      image = await fileToBase64(imageFile);
+    }
+
+    if(!image){
+      alert("Please upload a product image.");
+      saveBtn.disabled = false;
+      saveBtn.innerText = editingProductId ? "💾 Update Product" : "💾 Save Product";
+      return;
+    }
+
+    const productData = {
+      name,
+      category,
+      image,
+      affiliateLink
+    };
+
+    if(editingProductId){
+      await updateDoc(doc(db,"products",editingProductId), productData);
+
+      status.innerText = "✅ Product updated successfully";
+    }else{
+      await addDoc(collection(db,"products"), {
+        ...productData,
+        clicks: 0,
+        createdAt: Date.now()
+      });
+
+      status.innerText = "✅ Product saved successfully";
+    }
+
+    clearForm();
+    await loadProducts();
+
+  }catch(error){
+    console.error(error);
+    alert("Error saving product: " + error.message);
+  }finally{
+    saveBtn.disabled = false;
+    saveBtn.innerText = editingProductId ? "💾 Update Product" : "💾 Save Product";
+    if(!editingProductId){
+      saveBtn.innerText = "💾 Save Product";
+    }
+  }
+});
+
+/* ---------- LOAD PRODUCTS ---------- */
+async function loadProducts(){
+  const list = document.getElementById("productList");
+  list.innerHTML = "";
+
+  const snapshot = await getDocs(collection(db,"products"));
+
+  let totalClicks = 0;
+  let topProduct = "";
+  let topClicks = 0;
+
+  if(snapshot.empty){
+    list.innerHTML = "<p style='color:#7a5a6b;'>No products added yet.</p>";
+  }
+
+  snapshot.forEach((productDoc)=>{
+    const p = productDoc.data();
+    const clicks = p.clicks || 0;
+
+    totalClicks += clicks;
+
+    if(clicks > topClicks){
+      topClicks = clicks;
+      topProduct = p.name;
+    }
+
+    list.innerHTML += `
+      <div class="productRow">
+        <div class="productLeft">
+          <img src="${p.image}" alt="${p.name}">
+          <div class="productName">${p.name}</div>
+        </div>
+
+        <div class="productActions">
+          <button
+            onclick="editProduct('${productDoc.id}')"
+            class="actionBtn editBtn">
+            ✏️ Edit
+          </button>
+
+          <button
+            onclick="deleteProduct('${productDoc.id}')"
+            class="actionBtn deleteBtn">
+            🗑 Delete
+          </button>
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById("analyticsBox").innerHTML = `
+    <div style="
+      background:#fff4f8;
+      padding:20px;
+      border-radius:15px;
+    ">
+      <p>📊 Total Clicks: <b>${totalClicks}</b></p>
+      <p>🏆 Top Product: <b>${topProduct || "None Yet"}</b></p>
+      <p>🔥 Top Clicks: <b>${topClicks}</b></p>
+    </div>
+  `;
+}
+
+/* ---------- DELETE ---------- */
+window.deleteProduct = async function(id){
+  if(!confirm("Delete product?")) return;
+
+  try{
+    await deleteDoc(doc(db,"products",id));
+    await loadProducts();
+  }catch(error){
+    console.error(error);
+    alert("Could not delete product.");
+  }
+};
+
+/* ---------- EDIT ---------- */
+window.editProduct = async function(id){
+  try{
+    const productRef = doc(db,"products",id);
+    const productSnap = await getDoc(productRef);
+
+    if(!productSnap.exists()){
+      alert("Product not found.");
+      return;
+    }
+
+    const p = productSnap.data();
+
+    document.getElementById("name").value = p.name || "";
+    document.getElementById("category").value = p.category || "notebooks";
+    document.getElementById("affiliate").value = p.affiliateLink || "";
+
+    editingProductId = id;
+    existingImageData = p.image || "";
+
+    if(existingImageData){
+      showPreview(existingImageData);
+    }else{
+      hidePreview();
+    }
+
+    document.getElementById("saveBtn").innerText = "💾 Update Product";
+    document.getElementById("status").innerText = "Editing product...";
+    document.getElementById("imageFile").value = "";
+  }catch(error){
+    console.error(error);
+    alert("Could not load product for editing.");
+  }
+};
 </script>
 
 </body>
